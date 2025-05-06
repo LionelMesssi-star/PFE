@@ -1,0 +1,463 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<%@ Register Assembly="OfficeWebUI" Namespace="OfficeWebUI.Ribbon" TagPrefix="cc1" %>
+<%@ Register Assembly="OfficeWebUI, Version=2.4.4086.15482" Namespace="OfficeWebUI" TagPrefix="OfficeWebUI" %>
+<%@ Register Assembly="OfficeWebUI, Version=2.4.4086.15482" Namespace="OfficeWebUI.Ribbon" TagPrefix="OfficeWebUI" %>
+<%@ Register TagPrefix="popupWin" TagName="popupWin" Src="poupup.ascx" %>
+
+
+<html>
+<head runat="server">
+<script src="jquery-1.4.2.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        function popup(url, height, width, title) {
+            popupWind.SetSize(height, width);
+            popupWind.SetHeaderText(title);
+            popupWind.SetContentUrl(url);
+            popupWind.Show();
+        }
+        
+        function InscriptionShow() {
+            popup("inscription.aspx", 800, 300, "تسجيل ");
+        }
+  
+        function getQueryString(name, url) {
+            name = name.toString().toUpperCase();
+            url = url.toString().toUpperCase();
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regexS = "[\\?&]" + name + "=([^&#]*)";
+            var regex = new RegExp(regexS);
+            var results = regex.exec(url);
+            if (results == null)
+                return "";
+            else
+                return results[1];
+        }
+    </script>
+    <script type="text/javascript" language="javascript">
+
+        function ExportExcel(ExportExcel) {
+            if (ExportExcel) { ExportExcel.DoClick(); }
+        }
+
+        function ExportPDF(ExportPDF) {
+            if (btnExportPDF) {
+                btnExportPDF.DoClick();
+            }
+        }
+
+        function ExpandCollapse(valu) {
+
+            if (GridEtatSanter.IsGroupRowExpanded) {
+                GridEtatSanter.ExpandAll();
+            }
+            else {
+                GridEtatSanter.CollapseAll();
+            }
+
+        }
+
+
+        function ExpandCollapseGridDiffPointage(valus) {
+
+            if (GridDiffPointage.IsGroupRowExpanded) {
+                GridDiffPointage.ExpandAll();
+            }
+            else {
+                GridDiffPointage.CollapseAll();
+            }
+
+        }
+
+
+
+        function ExpandCollapseGridDetail(valus) {
+
+            if (GridEtatSanter.IsGroupRowExpanded) {
+                GridEtatSanter.ExpandAll();
+            }
+            else {
+                GridEtatSanter.CollapseAll();
+            }
+
+        }
+
+
+
+        function DocEtude_ExportExcel(ExportExcel) {
+            if (btnExportExcel) { btnExportExcel.DoClick(); }
+        }
+
+        function DocEtude_ExportPDF(ExportPDF) {
+            if (btnExportPDF) {btnExportPDF.DoClick();
+            }
+        }
+
+        
+
+
+        function SetSplitterPane(ctrl) {
+            window.frames['ifrDetails'].location.href = ctrl;
+        }
+
+        function SetSplitterPaneAp(ctrl) {
+            var Int = getQueryString("t", window.parent.location.href);
+
+            if (Int != '') {
+                window.frames['ifrDetails'].location.href = ctrl + "?t=" + Int;
+            }
+        }
+
+        function SetSplitterPaneRess(ctrl) {
+            var IntR = getQueryString("R", window.parent.location.href);
+
+            if (IntR != '') {
+                window.frames['ifrDetails'].location.href = ctrl + "?R=" + IntR;
+            }
+        }
+
+        function popup(url, height, width, title) {
+            popupWind.SetSize(height, width);
+            popupWind.SetHeaderText(title);
+            popupWind.SetContentUrl(url);
+            popupWind.Show();
+
+        }
+
+
+
+        function showTChDiscpline(selID) {
+            var DD = DateDebut.GetText();
+            var DF = DateFin.GetText();
+            popup("TChDiscplineSemaine.aspx?DD=" + DD + "&DF=" + DF, 1600, 900, "Taux de charge par discpline");
+        }
+
+
+        function TchRessourceSemain() {
+            if (GridDiscriptions.GetFocusedRowIndex() == -1) {
+                alert("choisirer un Discpline");
+                return;
+            }
+            GridDiscriptions.GetRowValues(GridDiscriptions.GetFocusedRowIndex(), 'IDDescpline', SelectDiscpline);
+        }
+
+
+        function SelectDiscpline(IdSelect) {
+            var DD = DateDebut.GetText();
+            var DF = DateFin.GetText();
+            popup("TchRessourceSemaine.aspx?DD=" + DD + "&DF=" + DF + "&Disc=" + IdSelect, 1600, 1300, "Taux de charge par Ressouce");
+        }
+
+
+
+
+        function TotalNBHParJour() {
+            if (GridVRessourceParDiscpline.GetFocusedRowIndex() == -1) {
+                alert("choisirer un Ressource");
+                return;
+            }
+            GridVRessourceParDiscpline.GetRowValues(GridVRessourceParDiscpline.GetFocusedRowIndex(), 'Matricule', SelecRessource);
+        }
+
+
+        function SelecRessource(IdSelectRess) {
+
+            var DD = DateDebut.GetText();
+            var DF = DateFin.GetText();
+            popup("TotalNBHParJour.aspx?DD=" + DD + "&DF=" + DF + "&Matricule=" + IdSelectRess, 1600, 900, "Total NBH par jour");
+        }
+
+
+
+
+
+
+        function AffichagDifferentCodDocument() {
+            if (GridDiffPointage.GetFocusedRowIndex() == -1) {
+                alert("choisirer un DCR");
+                return;
+            }
+            GridDiffPointage.GetRowValues(GridDiffPointage.GetFocusedRowIndex(), 'Ref_Projet', SelecDetailRef);
+        }
+
+
+        function SelecDetailRef(SelectProj) {
+          //  alert(SelectProj.toString());
+            popup("AffichagDifferentCodDocument.aspx?Affair=" + SelectProj.toString(), 1600, 900, "Différent codes document entre primavera et DCR");
+        }
+
+
+
+
+        function AffichagDiffRessourcePriPointage() {
+        
+            var Proj = GridLookupPath.GetText();
+            var Disc = CombDiscpline.GetValue();
+            var CodDoc = combCodDocument.GetText();
+
+
+
+            popup("AffichagDiffRessourcePriPointage.aspx?Affair=" + Proj + "&Disc=" + Disc + "&CodDoc=" + CodDoc, 1600, 900, "Différent Ressources affecter entre primavera et pointage Documents");
+       
+        }
+
+
+//        function SelecDetailRess(SelectAff) {
+//            //  alert(SelectProj.toString());
+//            popup("AffichagDiffRessourcePriPointage.aspx?Affair=" + SelectAff.toString(), 1600, 900, "Différent Ressources affecter entre primavera et pointage Documents");
+//       
+//        }
+
+
+
+        function EtatCivilShow() {
+            popup("Logement.aspx", 500, 450, " ");
+        }
+
+        function showSourceServenu() {
+            popup("SourceServnus.aspx", 500, 450, " ");
+        }
+        function showEtatSanter() {
+            popup("EtatSanter.aspx", 500, 450, " ");
+        }
+        function showVille() {
+            popup("Ville.aspx", 600, 500, "");
+        }
+
+        function showParenter() {
+            popup("Task.aspx", 600, 500, "");
+        }
+
+        function showTypeAide() {
+            popup("TypeAide.aspx", 500, 450, "  ");
+        }
+        function showProprieterLogement() {
+            popup("ProprieterGlobal.aspx", 1000, 650, "");
+        }
+
+        function Graphique() {
+
+
+            var selecVal = GridEtatSanter.GetFocusedRowIndex();
+
+            if (selecVal == -1) {
+                Erro.SetText("Selectionner SVP Activity");
+                ASPxPopupAlert.Show();
+            }
+            else {
+                PopupChart.PerformCallback();
+                PopupChart.Show();
+            }
+
+
+
+
+        }
+
+    </script>
+    <style type="text/css" id="StylePlaceholder" runat="server">
+        html
+        {
+            background-color: #e2e2e2;
+            margin: 0;
+            padding: 0;
+        }
+
+        body
+        {
+            background-color: #fff;
+            /*border-top: solid 1px #000;*/
+            color: #333;
+            font-size: .85em;
+            font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        a
+        {
+            color: #333;
+            outline: none;
+            padding-left: 3px;
+            padding-right: 3px;
+            text-decoration: underline;
+        }
+
+            a:link, a:visited,
+            a:active, a:hover
+            {
+                color: #333;
+            }
+
+            a:hover
+            {
+                background-color: #c7d1d6;
+            }
+
+        header, footer, hgroup,
+        nav, section
+        {
+            display: block;
+        }
+
+        mark
+        {
+            background-color: #a6dbed;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .float-left
+        {
+            float: left;
+        }
+
+        .float-right
+        {
+            float: right;
+        }
+
+        .clear-fix:after
+        {
+            content: ".";
+            clear: both;
+            display: block;
+            height: 0;
+            visibility: hidden;
+        }
+
+        h1, h2, h3,
+        h4, h5, h6
+        {
+            color: #000;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h1
+        {
+            font-size: 2em;
+        }
+
+        h2
+        {
+            font-size: 1.75em;
+        }
+
+        h3
+        {
+            font-size: 1.2em;
+        }
+
+        h4
+        {
+            font-size: 1.1em;
+        }
+
+        h5, h6
+        {
+            font-size: 1em;
+        }
+
+            h5 a:link, h5 a:visited, h5 a:active
+            {
+                padding: 0;
+                text-decoration: none;
+            }
+
+        /* main layout
+----------------------------------------------------------*/
+ 
+
+
+        /* site title
+----------------------------------------------------------*/
+        .site-title
+        {
+            color: #c8c8c8;
+            font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+            font-size: 2.3em;
+            margin: 0;
+        }
+
+            .site-title a, .site-title a:hover, .site-title a:active
+            {
+                background: none;
+                color: #c8c8c8;
+                outline: none;
+                text-decoration: none;
+            }
+
+
+        /* login
+----------------------------------------------------------*/
+        #login
+        {
+            display: block;
+            font-size: .85em;
+            margin: 0 0 10px;
+            text-align: right;
+        }
+
+            #login a
+            {
+                background-color: #d3dce0;
+                margin-left: 10px;
+                margin-right: 3px;
+                padding: 2px 3px;
+                text-decoration: none;
+            }
+
+                #login a.username
+                {
+                    background: none;
+                    margin-left: 0px;
+                    text-decoration: underline;
+                }
+
+            #login ul
+            {
+                margin: 0;
+            }
+
+            #login li
+            {
+                display: inline;
+                list-style: none;
+            }
+            
+           #body {
+    background-color: #fff;
+
+    clear: both;
+    padding-bottom: 35px;
+}
+    </style>
+<%--    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>--%>
+</head>
+<body>
+    <form id="form1" runat="server" style="background-color:White;">
+        <popupWin:popupWin ID="popupWin" runat="server" />
+        <header>
+
+         
+          
+        </header>
+        <div id="body">
+       
+
+            <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" >
+
+            </asp:ContentPlaceHolder >
+            <section class="content-wrapper">
+                <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder1" />
+            </section>
+        </div>
+
+        <footer>
+        
+        </footer>
+    </form>
+</body>
+</html>

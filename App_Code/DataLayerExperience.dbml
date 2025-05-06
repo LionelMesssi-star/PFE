@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Erpbilansocial" Class="DataLayerExperienceDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Usersession" Member="Usersession">
+    <Type Name="Usersession">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Nom_Prenom" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ID_Role" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.countSexe" Method="countSexe">
+    <ElementType Name="countSexeResult">
+      <Column Name="Nbr_Sexe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.countFonction" Method="countFonction">
+    <ElementType Name="countFonctionResult">
+      <Column Name="Nbr_Fonction" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.countDateEmbauche" Method="countDateEmbauche">
+    <ElementType Name="countDateEmbaucheResult">
+      <Column Name="Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Année" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.countDateDepart" Method="countDateDepart">
+    <ElementType Name="countDateDepartResult">
+      <Column Name="Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Année" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.countDepartement" Method="countDepartement">
+    <ElementType Name="countDepartementResult">
+      <Column Name="Nbr_Departement" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CountSalaire" Method="CountSalaire">
+    <ElementType Name="CountSalaireResult">
+      <Column Name="Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Employes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="salaire" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Annee" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.countEffTotal" Method="countEffTotal">
+    <ElementType Name="countEffTotalResult">
+      <Column Name="EffectifTotal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetRepartitionParAge" Method="GetRepartitionParAge">
+    <ElementType Name="GetRepartitionParAgeResult">
+      <Column Name="TrancheAge" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="NombreEmployes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetRepartitionParTypeContrat" Method="GetRepartitionParTypeContrat">
+    <ElementType Name="GetRepartitionParTypeContratResult">
+      <Column Name="TypeContrat" Type="System.String" DbType="VarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="NombreEmployes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTauxTurnover" Method="GetTauxTurnover">
+    <ElementType Name="GetTauxTurnoverResult">
+      <Column Name="Annee" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EffectifMoyen" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="NombreDeparts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NombreEmbauches" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TauxTurnover" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="TauxRotationGlobale" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetRepartitionHandicap" Method="GetRepartitionHandicap">
+    <ElementType Name="GetRepartitionHandicapResult">
+      <Column Name="Statut" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.updateUsersession" Method="updateUsersession">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Nom_Prenom" Parameter="nom_Prenom" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ID_Role" Parameter="iD_Role" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.updateUsersession1" Method="updateUsersession1">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Permition_GetByIDRole" Method="Permition_GetByIDRole">
+    <Parameter Name="ID_Role" Parameter="iD_Role" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Permition_GetByIDRoleResult">
+      <Column Name="RibbonEffectif" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonParcoursproo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonCompetences" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonFormation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonRemuneration" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonSanteSecurites" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonAbsentiesme" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonEmployes" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonSalaire" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonAbsentiesmes" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonFormationmation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonParcourspro" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonCompetence" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonSanteSecurite" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonDepenseFormation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonRole" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonPermission" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonRessource" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonControle" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RibbonParametrage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CountAgeMoy" Method="CountAgeMoy">
+    <ElementType Name="CountAgeMoyResult">
+      <Column Name="AgeH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AgeF" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AgeMoyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CountAnciennte" Method="CountAnciennte">
+    <ElementType Name="CountAnciennteResult">
+      <Column Name="AnciennteH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AnciennteF" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AnciennteMoyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

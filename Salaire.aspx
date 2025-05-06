@@ -1,0 +1,411 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Salaire.aspx.cs" Inherits="Salaire" %>
+
+<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Gestion des Salaires</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --success-color: #2ecc71;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 95%;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .header h1 {
+            color: var(--secondary-color);
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .grid-container {
+            position: relative;
+        }
+        
+        .status-bar {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .employee-count {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .grid-actions {
+            margin-top: 15px;
+            text-align: right;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        /* Custom grid styling */
+        .dxgvHeader_Office365, .dxgvHeader_Office365 table {
+            background-color: var(--secondary-color) !important;
+            color: white !important;
+            border-radius: 4px 4px 0 0 !important;
+        }
+        
+        .dxgvTitlePanel_Office365 {
+            background-color: var(--light-color) !important;
+            border-bottom: 1px solid #ddd !important;
+        }
+        
+        .dxgvDataRow_Office365 td {
+            border-bottom: 1px solid #f0f0f0 !important;
+        }
+        
+        .dxgvDataRow_Office365:hover td {
+            background-color: #f8f9fa !important;
+        }
+        
+        .dxgvFocusedRow_Office365 td {
+            background-color: var(--light-color) !important;
+            color: var(--dark-color) !important;
+        }
+        
+        /* Custom buttons */
+        .dxbButton_Office365 {
+            border-radius: 4px !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .dxbButton_Office365.dxbTSys {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+        }
+        
+        .dxbButton_Office365.dxbTSys:hover {
+            background-color: #2980b9 !important;
+        }
+        
+        .dxbButton_Office365.dxbDSys {
+            background-color: var(--accent-color) !important;
+            border-color: var(--accent-color) !important;
+        }
+        
+        .dxbButton_Office365.dxbDSys:hover {
+            background-color: #c0392b !important;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .action-buttons {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+                        <script type="text/javascript">
+
+                            function CliTest() {
+
+                                var Nom = lbNom.GetText();
+                                lbRepe.SetText(Nom);
+
+
+
+                            }
+
+                            function CallAP() {
+                                cmbArticle.PerformCallback();
+                                GrdAp.PerformCallback();
+                            }
+
+
+
+                            function AddCl() {
+
+                                GridCl.AddNewRow();
+
+                            }
+
+
+                            function MenuItemClickGamme(e) {
+                                if (e.item == null) return;
+                                var name = e.item.name;
+
+
+
+                                if (name == "mAdd") AddCl();
+                                if (name == "mDelete") DelCl();
+
+                            }
+
+
+                            function AddCl() {
+
+                                GridCl.AddNewRow();
+
+                            }
+
+                            function DelCl() {
+                                var index = GridCl.GetFocusedRowIndex();
+                                if (index >= 0) {
+                                    GridCl.DeleteRow(index);
+                                }
+                            }
+                            function grdInterventionContextMenu(s, e) {
+                                var x = ASPxClientUtils.GetEventX(e.htmlEvent);
+                                var y = ASPxClientUtils.GetEventY(e.htmlEvent);
+                                GridCl.SetFocusedRowIndex(e.index);
+                                pupmnInspection.ShowAtPos(x, y);
+                            }
+
+
+
+                            function GridMenuItemInspectionClick(e) {
+                                if (e.item == null) return;
+                                var name = e.item.name;
+
+                                alert(name);
+
+                                if (name == "mAdd") AddCl();
+                                if (name == "mDelete") DelCl();
+
+                            }
+                            //function DelCl() {
+                            //    var index = GridCl.GetFocusedRowIndex();
+                            //    if (index >= 0) {
+                            //        if (confirm("Êtes-vous sûr de vouloir supprimer ce user ?")) {
+                            //            GridCl.DeleteRow(index);
+                            //        }
+                            //    }
+                            //}
+                            function ShowCalendar(s, e) {
+                                s.ShowDropDown();
+                            }
+                            function OnGridEndCallback(s, e) {
+                                if (s.cpErrorMessage) {
+                                    alert(s.cpErrorMessage);
+                                    delete s.cpErrorMessage;
+                                }
+                            }
+                            
+</script>
+        <div class="container">
+            <div class="header">
+                <h1>💰 Gestion des Salaires</h1>
+                <div class="action-buttons">
+                    <dx:ASPxButton runat="server" Text="Exporter Excel" Theme="Office365" IconID="export_exporttoxlsx_svg_16x16" AutoPostBack="false">
+                        <ClientSideEvents Click="function(s, e) { gridExport.WriteXlsxToResponse({ fileName: 'Salaires_' + new Date().toLocaleDateString() + '.xlsx' }); }" />
+                    </dx:ASPxButton>
+                    <dx:ASPxButton runat="server" Text="Imprimer" Theme="Office365" IconID="print_print_svg_16x16" />
+                </div>
+            </div>
+
+            <div class="status-bar">
+                <div>
+                    <span>Statut: </span>
+                    <span class="employee-count">
+                        <dx:ASPxLabel ID="lblRecordCount" runat="server" Text="0 salaires"></dx:ASPxLabel>
+                    </span>
+                </div>
+                <div>
+                    <span>Dernière mise à jour: </span>
+                    <span><%= DateTime.Now.ToString("dd/MM/yyyy HH:mm") %></span>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                
+
+                <dx:ASPxGridView ID="GridCl" runat="server" DataSourceID="SqlSalaire" Width="100%" Theme="Office365" 
+                    KeyFieldName="ID_salaire" ClientInstanceName="GridCl" OnDataBound="GridCl_DataBound">
+                    <ClientSideEvents ContextMenu="grdInterventionContextMenu"/>
+
+                    <SettingsSearchPanel Visible="true" ShowApplyButton="true" />
+                    <SettingsText SearchPanelEditorNullText="Rechercher un salaire..." />
+
+                    <Columns>
+                        <dx:GridViewCommandColumn Width="150px" VisibleIndex="0" 
+                            ShowNewButtonInHeader="true" ShowEditButton="true" ShowDeleteButton="true">
+                            <HeaderTemplate>
+                                <dx:ASPxButton runat="server" Text="" RenderMode="Link" AutoPostBack="false">
+                                    <Image IconID="actions_add_16x16" Width="16px"></Image>
+                                    <ClientSideEvents Click="AddCl" />
+                                </dx:ASPxButton>
+                            </HeaderTemplate>
+                        </dx:GridViewCommandColumn>
+
+                        <dx:GridViewDataTextColumn FieldName="ID_salaire" Visible="false" />
+
+                        <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Employé" Width="33%">
+                            <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom" ValueField="ID">
+                                <ValidationSettings RequiredField-IsRequired="true" />
+                            </PropertiesComboBox>
+                        </dx:GridViewDataComboBoxColumn>
+
+                        <dx:GridViewDataTextColumn FieldName="salaire" Caption="Salaire (TND)" Width="33%">
+                            <PropertiesTextEdit DisplayFormatString="N3">
+                                <ValidationSettings RequiredField-IsRequired="true" />
+                            </PropertiesTextEdit>
+                        </dx:GridViewDataTextColumn>
+
+                        <dx:GridViewDataDateColumn FieldName="Date" Caption="Date" Width="33%">
+                            <PropertiesDateEdit EditFormat="Date" UseMaskBehavior="true" DisplayFormatString="dd/MM/yyyy">
+                                <ClientSideEvents GotFocus="ShowCalendar" />
+                                <ValidationSettings RequiredField-IsRequired="true" />
+                            </PropertiesDateEdit>
+                        </dx:GridViewDataDateColumn>
+                    </Columns>
+
+                   <SettingsEditing Mode="PopupEditForm" />
+                    <SettingsPopup>
+                        <EditForm Width="600" Modal="true" HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" />
+                    </SettingsPopup>
+                    
+                    <EditFormLayoutProperties>
+                        <Items>
+                            <dx:GridViewColumnLayoutItem ColumnName="ID_Employes" />
+                            <dx:GridViewColumnLayoutItem ColumnName="salaire" />
+                            <dx:GridViewColumnLayoutItem ColumnName="Date" />
+                            <dx:EditModeCommandLayoutItem HorizontalAlign="Right" />
+                        </Items>
+                    </EditFormLayoutProperties>
+
+                     <settingscommandbutton>
+     <previewchangesbutton text="Preview">
+     </previewchangesbutton>
+     <editbutton>
+         <image iconid="iconbuilder_actions_edit_svg_16x16" width="16px">
+         </image>
+     </editbutton>
+     <deletebutton>
+         <image iconid="iconbuilder_actions_delete_svg_16x16" width="16px">
+         </image>
+     </deletebutton>
+     <cancelbutton text="Cancel">
+         <image iconid="iconbuilder_actions_undo_svg_16x16" width="16px">
+         </image>
+     </cancelbutton>
+     <updatebutton text="Save">
+         <image iconid="iconbuilder_actions_edit_svg_16x16" width="16px">
+         </image>
+     </updatebutton>
+ </settingscommandbutton>
+
+                    <Styles>
+                        <Header HorizontalAlign="Center" />
+                        <FocusedRow BackColor="#f0f7ff" ForeColor="#333" />
+                        <SelectedRow BackColor="#e6f2ff" />
+                    </Styles>
+
+                    <SettingsPager PageSize="20" EnableAdaptivity="true">
+                        <PageSizeItemSettings Visible="true" Items="10,20,50,100" Position="Right" ShowAllItem="true" />
+                    </SettingsPager>
+
+                    <SettingsBehavior ConfirmDelete="true" AllowDragDrop="False" AllowGroup="False" AllowFocusedRow="True" />
+                    <Settings ShowFooter="true" ShowColumnHeaders="true" ShowGroupPanel="false" 
+                        VerticalScrollableHeight="400" VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
+
+                    <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="true" />
+
+                    <Templates>
+                        <StatusBar>
+                            <div style="padding: 8px; background-color: #f8f9fa; border-top: 1px solid #ddd; text-align: right;">
+                                <dx:ASPxLabel runat="server" Text='<%# "Total: " + GridCl.VisibleRowCount + " salaires" %>' />
+                            </div>
+                        </StatusBar>
+                    </Templates>
+                </dx:ASPxGridView>
+
+                <!-- Boutons sous la grille -->
+                <div class="grid-actions">
+                    <dx:ASPxButton ID="btnUpdate" runat="server" Text="Enregistrer" Theme="Office365" AutoPostBack="false" UseSubmitBehavior="false">
+                        <ClientSideEvents Click="function(s, e) { GridCl.UpdateEdit(); }" />
+                        <Image IconID="save_save_16x16" Width="16px" />
+                    </dx:ASPxButton>
+                    <dx:ASPxButton ID="btnCancel" runat="server" Text="Annuler" Theme="Office365" AutoPostBack="false" UseSubmitBehavior="false" style="margin-left: 10px;">
+                        <ClientSideEvents Click="function(s, e) { GridCl.CancelEdit(); }" />
+                        <Image IconID="actions_cancel_16x16" Width="16px" />
+                    </dx:ASPxButton>
+                </div>
+
+                <!-- Composant d'exportation invisible -->
+                <dx:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="GridCl" 
+                    FileName="Liste_Salaires" PaperKind="A4" Landscape="true">
+                    <PageHeader Center="Liste des salaires" Font-Bold="true" />
+                    <PageFooter Left="Exporté le: &amp;d" Right="Page &amp;p de &amp;P" />
+                </dx:ASPxGridViewExporter>
+            </div>
+        </div>
+
+        <asp:SqlDataSource ID="SqlSalaire" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
+            SelectCommand="SelectSalaire" SelectCommandType="StoredProcedure"
+            DeleteCommand="deleteSalaire" DeleteCommandType="StoredProcedure"
+            UpdateCommand="updateSalaire" UpdateCommandType="StoredProcedure"
+            InsertCommand="insertSalaire" InsertCommandType="StoredProcedure">
+            <DeleteParameters>
+                <asp:Parameter Name="ID_salaire" />
+            </DeleteParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="ID_salaire" />
+                <asp:Parameter Name="salaire" />
+                <asp:Parameter Name="Date" />
+                <asp:Parameter Name="ID_Employes" />
+            </UpdateParameters>
+            <InsertParameters>
+                <asp:Parameter Name="salaire" />
+                <asp:Parameter Name="Date" />
+                <asp:Parameter Name="ID_Employes" />
+            </InsertParameters>
+        </asp:SqlDataSource>
+
+        <asp:SqlDataSource ID="SqlEmployes" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
+            SelectCommand="SELECT ID, Nom + ' ' + Prenom AS Nom_Prenom FROM Employes ORDER BY Nom, Prenom" />
+    </form>
+</body>
+</html>
