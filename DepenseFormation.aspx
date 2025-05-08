@@ -43,7 +43,7 @@
         }
 
         #form1 {
-            max-width: 1200px;
+            max-width: 1500px;
             width: 100%;
             background: #ffffff;
             border-radius: 16px;

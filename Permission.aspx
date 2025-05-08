@@ -44,7 +44,7 @@
 
         /* Conteneur principal */
         #form1 {
-            max-width: 1400px;
+            max-width: 1500px;
             width: 100%;
             background: #ffffff;
             border-radius: 16px;
@@ -546,6 +546,7 @@
  animation: slideIn 0.8s ease-out;
  position: relative;
  padding-bottom: 6px;
+     border-block-start:100px
         }
 
         .dashboard-header-title::after {

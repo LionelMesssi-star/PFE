@@ -7,168 +7,14 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Gestion des Employés</title>
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #34495e;
-            --success-color: #2ecc71;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f7fa;
-            color: #333;
-        }
-        
-        .container {
-            max-width: 95%;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .header h1 {
-            color: var(--secondary-color);
-            margin: 0;
-            font-size: 24px;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .grid-container {
-            position: relative;
-        }
-        
-        .status-bar {
-            background-color: var(--light-color);
-            padding: 10px 15px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-        }
-        
-        .employee-count {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .grid-actions {
-            margin-top: 15px;
-            text-align: right;
-            padding: 10px;
-            background-color: #f8f9fa;
-            border-radius: 4px;
-        }
-        
-        /* Custom grid styling */
-        .dxgvHeader_Office365, .dxgvHeader_Office365 table {
-            background-color: var(--secondary-color) !important;
-            color: white !important;
-            border-radius: 4px 4px 0 0 !important;
-        }
-        
-        .dxgvTitlePanel_Office365 {
-            background-color: var(--light-color) !important;
-            border-bottom: 1px solid #ddd !important;
-        }
-        
-        .dxgvDataRow_Office365 td {
-            border-bottom: 1px solid #f0f0f0 !important;
-        }
-        
-        .dxgvDataRow_Office365:hover td {
-            background-color: #f8f9fa !important;
-        }
-        
-        .dxgvFocusedRow_Office365 td {
-            background-color: var(--light-color) !important;
-            color: var(--dark-color) !important;
-        }
-        
-        /* Custom buttons */
-        .dxbButton_Office365 {
-            border-radius: 4px !important;
-            transition: all 0.3s ease !important;
-        }
-        
-        .dxbButton_Office365.dxbTSys {
-            background-color: var(--primary-color) !important;
-            border-color: var(--primary-color) !important;
-        }
-        
-        .dxbButton_Office365.dxbTSys:hover {
-            background-color: #2980b9 !important;
-        }
-        
-        .dxbButton_Office365.dxbDSys {
-            background-color: var(--accent-color) !important;
-            border-color: var(--accent-color) !important;
-        }
-        
-        .dxbButton_Office365.dxbDSys:hover {
-            background-color: #c0392b !important;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            
-            .action-buttons {
-                width: 100%;
-                justify-content: flex-end;
-            }
-        }
-    </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="container">
             <div class="header">
-                <h1>📊 Gestion des Employés</h1>
-                <div class="action-buttons">
-                    <dx:ASPxButton runat="server" Text="Exporter Excel" Theme="Office365" IconID="export_exporttoxlsx_svg_16x16" />
-                    <dx:ASPxButton runat="server" Text="Imprimer" Theme="Office365" IconID="print_print_svg_16x16" />
-                </div>
-            </div>
-
-            <div class="status-bar">
-                <div>
-                    <span>Statut: </span>
-                    <span class="employee-count">
-                        <dx:ASPxLabel ID="TxtEffT" runat="server" CssClass="label"></dx:ASPxLabel>
-                        employés actifs</span>
-                </div>
-                <div>
-                    <span>Dernière mise à jour: </span>
-                    <span><%= DateTime.Now.ToString("dd/MM/yyyy HH:mm") %></span>
-                </div>
-            </div>
+                <h1> Gestion des Employés</h1></div>
+                 
 
             <div class="grid-container">
                 <script type="text/javascript">
@@ -207,22 +53,14 @@
                         if (name == "mDelete") DelCl();
                     }
 
-                    function onGridInit(s, e) {
-                        // Customize the search panel
-                        var searchPanel = s.FindSearchPanel();
-                        if (searchPanel) {
-                            searchPanel.SetPlaceholder("Rechercher un employé...");
-                        }
-                    }
+                    
                     
 
                 </script>
 
                 <dx:ASPxGridView ID="GridCl" runat="server" DataSourceID="SqlEmployes" Width="100%" Theme="Office365" KeyFieldName="ID"
                     ClientInstanceName="GridCl">
-                    <ClientSideEvents ContextMenu="grdInterventionContextMenu" Init="onGridInit" />
                     <SettingsSearchPanel Visible="true" ShowApplyButton="true" />
-                    <SettingsText SearchPanelEditorNullText="Rechercher un employé..." />
 
                     <Columns>
                         <dx:GridViewCommandColumn ButtonType="Image" Caption=" " Width="60px"
