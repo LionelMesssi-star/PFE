@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        /* CSS inchangé */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -322,6 +323,7 @@
         }
     </style>
     <script>
+        /* JavaScript inchangé */
         document.addEventListener('DOMContentLoaded', function () {
             // Particle Background
             const canvas = document.getElementById('particle-canvas');
@@ -524,7 +526,7 @@
 
         <dx:ASPxFormLayout ID="FormEffectif" runat="server" EnableViewState="false" EncodeHtml="false" RequiredMarkDisplayMode="RequiredOnly" ColumnCount="4" Theme="Glass" Width="100%">
             <Items>
-                <dx:LayoutGroup ShowCaption="False" ColumnSpan="4" GroupBoxStyle-Caption-Font-Bold="true" Width="100%">
+                 <dx:LayoutGroup Caption="Effectif Total" ColumnSpan="4" GroupBoxStyle-Caption-Font-Bold="true" Width="100%">
                     <Items>
                         <dx:LayoutItem ShowCaption="False" HorizontalAlign="Center">
                             <LayoutItemNestedControlCollection>
@@ -607,244 +609,253 @@
                         </dx:LayoutItem>
                     </Items>
                 </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="Contrat de travail" ShowCaption="False" GroupBoxStyle-Caption-Font-Bold="true" Width="25%">
+
+                 <dx:LayoutGroup Caption="   " ColumnSpan="2" GroupBoxStyle-Caption-Font-Bold="true" Width="50%">
                     <Items>
-                        <dx:LayoutItem ShowCaption="False">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer>
-                                    <dx:ASPxGridView ID="GridContract" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridContract" Theme="Glass"
-                                        Width="100%" KeyFieldName="ID" DataSourceID="sqlcontrat">
-                                        <Columns>
-                                            <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataComboBoxColumn FieldName="ID_TypeC" Caption="Contrat de Travail" Width="60%">
-                                                <PropertiesComboBox DataSourceID="SqlTC" TextField="Description" ValueField="ID">
-                                                    <ValidationSettings RequiredField-IsRequired="true" />
-                                                </PropertiesComboBox>
-                                            </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataTextColumn FieldName="NbrN" Caption="2025" VisibleIndex="2" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="NbrN1" Caption="2024" VisibleIndex="3" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="NbrN2" Caption="2023" VisibleIndex="4" Width="13%" />
-                                        </Columns>
-                                        <SettingsResizing ColumnResizeMode="NextColumn" />
-                                        <SettingsSearchPanel Visible="false" />
-                                        <SettingsPager Visible="false" />
-                                        <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
-                                            VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
-                                    </dx:ASPxGridView>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
+                        <dx:LayoutGroup Caption="Sexe" Width="50%">
+                            <Items>
+                                <dx:LayoutItem ShowCaption="False">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer>
+                                            <dx:ASPxGridView ID="GridSexe" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridSexe" Theme="Glass"
+                                                Width="100%" KeyFieldName="ID" DataSourceID="SqlSexe">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="Sexe" Caption="Sexe" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
+                                                </Columns>
+                                                <SettingsResizing ColumnResizeMode="NextColumn" />
+                                                <SettingsSearchPanel Visible="false" />
+                                                <SettingsPager Visible="false" />
+                                                <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
+                                                    VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
+                                            </dx:ASPxGridView>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                            </Items>
+                        </dx:LayoutGroup>
+                        <dx:LayoutGroup Caption="Nationalité" Width="50%">
+                            <Items>
+                                <dx:LayoutItem ShowCaption="False">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer>
+                                            <dx:ASPxGridView ID="GridNationalite" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridNationalite" Theme="Glass"
+                                                Width="100%" KeyFieldName="Id" DataSourceID="SqlNA">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="Id" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="TypeNationalite" Caption="Nationalité" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
+                                                </Columns>
+                                                <SettingsResizing ColumnResizeMode="NextColumn" />
+                                                <SettingsSearchPanel Visible="false" />
+                                                <SettingsPager Visible="false" />
+                                                <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
+                                                    VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
+                                            </dx:ASPxGridView>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                            </Items>
+                        </dx:LayoutGroup>
+                        <dx:LayoutGroup Caption="Tranche d'âge" Width="50%">
+                            <Items>
+                                <dx:LayoutItem ShowCaption="False">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer>
+                                            <dx:ASPxGridView ID="GridTranche" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridTranche" Theme="Glass"
+                                                Width="100%" KeyFieldName="ID" DataSourceID="SqlTA">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="TrancheAge" Caption="Tranche d'âge" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
+                                                </Columns>
+                                                <SettingsResizing ColumnResizeMode="NextColumn" />
+                                                <SettingsSearchPanel Visible="false" />
+                                                <SettingsPager Visible="false" />
+                                                <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
+                                                    VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
+                                            </dx:ASPxGridView>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                            </Items>
+                        </dx:LayoutGroup>
+                        <dx:LayoutGroup Caption="Statut Handicapé" Width="50%">
+                            <Items>
+                                <dx:LayoutItem ShowCaption="False">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer>
+                                            <dx:ASPxGridView ID="GridHandicape" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridHandicape" Theme="Glass"
+                                                Width="100%" KeyFieldName="Id" DataSourceID="SqlHa">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="Id" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="Handicape" Caption="Statut Handicapé" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
+                                                </Columns>
+                                                <SettingsResizing ColumnResizeMode="NextColumn" />
+                                                <SettingsSearchPanel Visible="false" />
+                                                <SettingsPager Visible="false" />
+                                                <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
+                                                    VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
+                                            </dx:ASPxGridView>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                            </Items>
+                        </dx:LayoutGroup>
                     </Items>
                 </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="Temps de travail" ShowCaption="False" GroupBoxStyle-Caption-Font-Bold="true" Width="25%">
+
+                 <dx:LayoutGroup Caption="   " ColumnSpan="2" GroupBoxStyle-Caption-Font-Bold="true" Width="50%">
                     <Items>
-                        <dx:LayoutItem ShowCaption="False">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer>
-                                    <dx:ASPxGridView ID="GridTemp" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridTemp" Theme="Glass"
-                                        Width="100%" KeyFieldName="Id" DataSourceID="SqlTemp">
-                                        <Columns>
-                                            <dx:GridViewDataTextColumn FieldName="Id" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="Type_Contrat" Caption="Temps de travail" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
-                                        </Columns>
-                                        <SettingsResizing ColumnResizeMode="NextColumn" />
-                                        <SettingsSearchPanel Visible="false" />
-                                        <SettingsPager Visible="false" />
-                                        <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
-                                            VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
-                                    </dx:ASPxGridView>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
+                        <dx:LayoutGroup Caption="Contrat de travail" Width="50%">
+                            <Items>
+                                <dx:LayoutItem ShowCaption="False">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer>
+                                            <dx:ASPxGridView ID="GridContract" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridContract" Theme="Glass"
+                                                Width="100%" KeyFieldName="ID" DataSourceID="sqlcontrat">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataComboBoxColumn FieldName="ID_TypeC" Caption="Contrat de Travail" Width="60%">
+                                                        <PropertiesComboBox DataSourceID="SqlTC" TextField="Description" ValueField="ID">
+                                                            <ValidationSettings RequiredField-IsRequired="true" />
+                                                        </PropertiesComboBox>
+                                                    </dx:GridViewDataComboBoxColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="NbrN" Caption="2025" VisibleIndex="2" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="NbrN1" Caption="2024" VisibleIndex="3" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="NbrN2" Caption="2023" VisibleIndex="4" Width="13%" />
+                                                </Columns>
+                                                <SettingsResizing ColumnResizeMode="NextColumn" />
+                                                <SettingsSearchPanel Visible="false" />
+                                                <SettingsPager Visible="false" />
+                                                <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
+                                                    VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
+                                            </dx:ASPxGridView>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                            </Items>
+                        </dx:LayoutGroup>
+                        <dx:LayoutGroup Caption="Temps de travail" Width="50%">
+                            <Items>
+                                <dx:LayoutItem ShowCaption="False">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer>
+                                            <dx:ASPxGridView ID="GridTemp" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridTemp" Theme="Glass"
+                                                Width="100%" KeyFieldName="Id" DataSourceID="SqlTemp">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="Id" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="Type_Contrat" Caption="Temps de travail" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
+                                                </Columns>
+                                                <SettingsResizing ColumnResizeMode="NextColumn" />
+                                                <SettingsSearchPanel Visible="false" />
+                                                <SettingsPager Visible="false" />
+                                                <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
+                                                    VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
+                                            </dx:ASPxGridView>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                            </Items>
+                        </dx:LayoutGroup>
+                        <dx:LayoutGroup Caption="Catégorie professionnelle" Width="50%">
+                            <Items>
+                                <dx:LayoutItem ShowCaption="False">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer>
+                                            <dx:ASPxGridView ID="GridCategorie" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridCategorie" Theme="Glass"
+                                                Width="100%" KeyFieldName="Id" DataSourceID="SqlFA">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="Id" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="Fonction" Caption="Catégorie professionnelle" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
+                                                </Columns>
+                                                <SettingsResizing ColumnResizeMode="NextColumn" />
+                                                <SettingsSearchPanel Visible="false" />
+                                                <SettingsPager Visible="false" />
+                                                <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
+                                                    VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
+                                            </dx:ASPxGridView>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                            </Items>
+                        </dx:LayoutGroup>
+                        <dx:LayoutGroup Caption="Département" Width="50%">
+                            <Items>
+                                <dx:LayoutItem ShowCaption="False">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer>
+                                            <dx:ASPxGridView ID="GridDepartement" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridDepartement" Theme="Glass"
+                                                Width="100%" KeyFieldName="ID" DataSourceID="SqlDep">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataComboBoxColumn FieldName="Departement_ID" Caption="Département" Width="60%">
+                                                        <PropertiesComboBox DataSourceID="SqlDeep" TextField="Description" ValueField="ID">
+                                                            <ValidationSettings RequiredField-IsRequired="true" />
+                                                        </PropertiesComboBox>
+                                                    </dx:GridViewDataComboBoxColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="NbrN" Caption="2025" VisibleIndex="2" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="NbrN1" Caption="2024" VisibleIndex="3" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="NbrN2" Caption="2023" VisibleIndex="4" Width="13%" />
+                                                </Columns>
+                                                <SettingsResizing ColumnResizeMode="NextColumn" />
+                                                <SettingsSearchPanel Visible="false" />
+                                                <SettingsPager Visible="false" />
+                                                <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
+                                                    VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
+                                            </dx:ASPxGridView>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                            </Items>
+                        </dx:LayoutGroup>
+                        <dx:LayoutGroup Caption="Ancienneté" Width="50%">
+                            <Items>
+                                <dx:LayoutItem ShowCaption="False">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer>
+                                            <dx:ASPxGridView ID="GridAnciennete" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridAnciennete" Theme="Glass"
+                                                Width="100%" KeyFieldName="ID" DataSourceID="SqlAnn">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="TrancheAnciennete" Caption="Ancienneté" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
+                                                    <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
+                                                </Columns>
+                                                <SettingsResizing ColumnResizeMode="NextColumn" />
+                                                <SettingsSearchPanel Visible="false" />
+                                                <SettingsPager Visible="false" />
+                                                <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
+                                                    VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
+                                            </dx:ASPxGridView>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                            </Items>
+                        </dx:LayoutGroup>
                     </Items>
                 </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="Catégorie professionnelle" ShowCaption="False" GroupBoxStyle-Caption-Font-Bold="true" Width="25%">
-                    <Items>
-                        <dx:LayoutItem Caption=" ">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer>
-                                    <dx:ASPxGridView ID="GridCategorie" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridCategorie" Theme="Glass"
-                                        Width="100%" KeyFieldName="Id" DataSourceID="SqlFA">
-                                        <Columns>
-                                            <dx:GridViewDataTextColumn FieldName="Id" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="Fonction" Caption="Catégorie professionnelle" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
-                                        </Columns>
-                                        <SettingsResizing ColumnResizeMode="NextColumn" />
-                                        <SettingsSearchPanel Visible="false" />
-                                        <SettingsPager Visible="false" />
-                                        <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
-                                            VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
-                                    </dx:ASPxGridView>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                    </Items>
-                </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="Tranche d'age" ShowCaption="False" GroupBoxStyle-Caption-Font-Bold="true" Width="25%">
-                    <Items>
-                        <dx:LayoutItem ShowCaption="False">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer>
-                                    <dx:ASPxGridView ID="GridTranche" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridTranche" Theme="Glass"
-                                        Width="100%" KeyFieldName="ID" DataSourceID="SqlTA">
-                                        <Columns>
-                                            <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="TrancheAge" Caption="Tranche d'age" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
-                                        </Columns>
-                                        <SettingsResizing ColumnResizeMode="NextColumn" />
-                                        <SettingsSearchPanel Visible="false" />
-                                        <SettingsPager Visible="false" />
-                                        <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
-                                            VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
-                                    </dx:ASPxGridView>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                    </Items>
-                </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="Ancienneté" ShowCaption="False" GroupBoxStyle-Caption-Font-Bold="true" Width="25%">
-                    <Items>
-                        <dx:LayoutItem Caption=" ">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer>
-                                    <dx:ASPxGridView ID="GridAnciennete" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridAnciennete" Theme="Glass"
-                                        Width="100%" KeyFieldName="ID" DataSourceID="SqlAnn">
-                                        <Columns>
-                                            <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="TrancheAnciennete" Caption="Ancienneté" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
-                                        </Columns>
-                                        <SettingsResizing ColumnResizeMode="NextColumn" />
-                                        <SettingsSearchPanel Visible="false" />
-                                        <SettingsPager Visible="false" />
-                                        <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
-                                            VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
-                                    </dx:ASPxGridView>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                    </Items>
-                </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="Sexe" ShowCaption="False" GroupBoxStyle-Caption-Font-Bold="true" Width="25%">
-                    <Items>
-                        <dx:LayoutItem ShowCaption="False">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer>
-                                    <dx:ASPxGridView ID="GridSexe" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridSexe" Theme="Glass"
-                                        Width="100%" KeyFieldName="ID" DataSourceID="SqlSexe">
-                                        <Columns>
-                                            <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="Sexe" Caption="Sexe" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
-                                        </Columns>
-                                        <SettingsResizing ColumnResizeMode="NextColumn" />
-                                        <SettingsSearchPanel Visible="false" />
-                                        <SettingsPager Visible="false" />
-                                        <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
-                                            VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
-                                    </dx:ASPxGridView>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                    </Items>
-                </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="Nationalité" ShowCaption="False" GroupBoxStyle-Caption-Font-Bold="true" Width="25%">
-                    <Items>
-                        <dx:LayoutItem Caption=" ">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer>
-                                    <dx:ASPxGridView ID="GridNationalite" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridNationalite" Theme="Glass"
-                                        Width="100%" KeyFieldName="Id" DataSourceID="SqlNA">
-                                        <Columns>
-                                            <dx:GridViewDataTextColumn FieldName="Id" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="TypeNationalite" Caption="Nationalité" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
-                                        </Columns>
-                                        <SettingsResizing ColumnResizeMode="NextColumn" />
-                                        <SettingsSearchPanel Visible="false" />
-                                        <SettingsPager Visible="false" />
-                                        <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
-                                            VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
-                                    </dx:ASPxGridView>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                    </Items>
-                </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="Département" ShowCaption="False" GroupBoxStyle-Caption-Font-Bold="true" Width="25%">
-                    <Items>
-                        <dx:LayoutItem Caption=" ">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer>
-                                    <dx:ASPxGridView ID="GridDepartement" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridDepartement" Theme="Glass"
-                                        Width="100%" KeyFieldName="ID" DataSourceID="sqldep">
-                                        <Columns>
-                                            <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataComboBoxColumn FieldName="Departement_ID" Caption="Département" Width="60%">
-                                                <PropertiesComboBox DataSourceID="SqlDeep" TextField="Description" ValueField="ID">
-                                                    <ValidationSettings RequiredField-IsRequired="true" />
-                                                </PropertiesComboBox>
-                                            </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataTextColumn FieldName="NbrN" Caption="2025" VisibleIndex="2" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="NbrN1" Caption="2024" VisibleIndex="3" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="NbrN2" Caption="2023" VisibleIndex="4" Width="13%" />
-                                        </Columns>
-                                        <SettingsResizing ColumnResizeMode="NextColumn" />
-                                        <SettingsSearchPanel Visible="false" />
-                                        <SettingsPager Visible="false" />
-                                        <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
-                                            VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
-                                    </dx:ASPxGridView>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                    </Items>
-                </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="Statut Handicapé" ShowCaption="False" GroupBoxStyle-Caption-Font-Bold="true" Width="25%">
-                    <Items>
-                        <dx:LayoutItem Caption=" ">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer>
-                                    <dx:ASPxGridView ID="GridHandicape" runat="server" AutoGenerateColumns="False" ClientInstanceName="GridHandicape" Theme="Glass"
-                                        Width="100%" KeyFieldName="Id" DataSourceID="SqlHa">
-                                        <Columns>
-                                            <dx:GridViewDataTextColumn FieldName="Id" VisibleIndex="0" ReadOnly="True" Visible="false"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="Handicape" Caption="Statut Handicapé" VisibleIndex="1" Width="60%"></dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataTextColumn FieldName="2025" Caption="2025" VisibleIndex="2" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2024" Caption="2024" VisibleIndex="3" Width="13%" />
-                                            <dx:GridViewDataTextColumn FieldName="2023" Caption="2023" VisibleIndex="4" Width="13%" />
-                                        </Columns>
-                                        <SettingsResizing ColumnResizeMode="NextColumn" />
-                                        <SettingsSearchPanel Visible="false" />
-                                        <SettingsPager Visible="false" />
-                                        <Settings ShowTitlePanel="false" ShowGroupPanel="false" ShowColumnHeaders="true" ShowFilterRow="false"
-                                            VerticalScrollBarMode="Visible" VerticalScrollableHeight="120" />
-                                    </dx:ASPxGridView>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                    </Items>
-                </dx:LayoutGroup>
-                
             </Items>
         </dx:ASPxFormLayout>
 
-        <asp:SqlDataSource ID="SqlHa" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
+         <asp:SqlDataSource ID="SqlHa" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
             SelectCommand="GetRepartitionHandicap" SelectCommandType="StoredProcedure" />
         <asp:SqlDataSource ID="sqlcontrat" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
             SelectCommand="afficher_Contrat" SelectCommandType="StoredProcedure" />

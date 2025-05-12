@@ -659,7 +659,7 @@
 
     </table>
     <div style="padding-right: 2px;">
-        <iframe name="ifrDetails" src="Pagehomes.aspx" style="border-right: 1px solid #C0C0C0; border-left: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; background-color: Transparent;" width="100%" height="1500px" frameborder="1" scrolling="no" id="Iframe1"></iframe>
+        <iframe name="ifrDetails" src="Pagehomes.aspx" style="border-right: 1px solid #C0C0C0; border-left: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; background-color: Transparent;" width="100%" height="1800px" frameborder="1" scrolling="no" id="Iframe1"></iframe>
 
     </div>
 

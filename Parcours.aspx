@@ -167,7 +167,15 @@
             function AddCl() {
                 GridCl.AddNewRow();
             }
-
+            function AdddCl() {
+                GridSanction.AddNewRow();
+            }
+            function DellCl() {
+                var index = GridSanction.GetFocusedRowIndex();
+                if (index >= 0) {
+                    GridSanction.DeleteRow(index);
+                }
+            }
             function DelCl() {
                 var index = GridCl.GetFocusedRowIndex();
                 if (index >= 0) {
@@ -210,18 +218,18 @@
                         <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom" ValueField="ID" />
                     </dx:GridViewDataComboBoxColumn>
 
-                    <dx:GridViewDataComboBoxColumn FieldName="Type_Mouvement" Caption="Type Mouvement" >
-    <PropertiesComboBox>
-        <Items>
-            <dx:ListEditItem Text="Chomage" Value="Chomage" />
-            <dx:ListEditItem Text="Chomage Partiel" Value="Chomage_Partiel" />
-            <dx:ListEditItem Text="Mutation" Value="Mutation" />
-            <dx:ListEditItem Text="Promotion" Value="Promotion" />
+                    <dx:GridViewDataComboBoxColumn FieldName="Type_Mouvement" Caption="Type Mouvement">
+                        <PropertiesComboBox>
+                            <Items>
+                                <dx:ListEditItem Text="Chomage" Value="Chomage" />
+                                <dx:ListEditItem Text="Chomage Partiel" Value="Chomage_Partiel" />
+                                <dx:ListEditItem Text="Mutation" Value="Mutation" />
+                                <dx:ListEditItem Text="Promotion" Value="Promotion" />
 
-        </Items>
-        <ValidationSettings RequiredField-IsRequired="true" />
-    </PropertiesComboBox>
-</dx:GridViewDataComboBoxColumn>
+                            </Items>
+                            <ValidationSettings RequiredField-IsRequired="true" />
+                        </PropertiesComboBox>
+                    </dx:GridViewDataComboBoxColumn>
 
                     <dx:GridViewDataDateColumn FieldName="Date_Effet" Caption="Date Debut" Visible="true">
                         <PropertiesDateEdit EditFormat="Date" UseMaskBehavior="true" DisplayFormatString="dd/MM/yyyy">
@@ -266,7 +274,100 @@
                 <Settings ShowFooter="false" ShowColumnHeaders="true" ShowGroupPanel="false" ShowGroupFooter="VisibleIfExpanded"
                     VerticalScrollableHeight="250" VerticalScrollBarMode="Visible" />
             </dx:ASPxGridView>
+            </div>
+            <div>
+            <dx:ASPxGridView ID="GridSanction" runat="server" DataSourceID="SqlSanction" Width="100%" Theme="Office365" KeyFieldName="ID">
+                <SettingsSearchPanel Visible="true" />
+                <ClientSideEvents ContextMenu="grdInterventionContextMenu" />
+                <Columns>
+                    <dx:GridViewCommandColumn ButtonType="Image" Caption=" " Width="5%"
+                        ShowSelectCheckbox="false" VisibleIndex="0"
+                        ShowEditButton="false"
+                        ShowUpdateButton="true"
+                        ShowDeleteButton="true"
+                        ShowCancelButton="true">
+                        <HeaderTemplate>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <dx:ASPxButton HorizontalAlign="Center" runat="server" Text=" " RenderMode="Link" AutoPostBack="false">
+                                    <Image IconID="iconbuilder_actions_add_svg_16x16" Width="16px"></Image>
+                                    <ClientSideEvents Click="AdddCl" />
+                                </dx:ASPxButton>
+                            </div>
+                        </HeaderTemplate>
+                    </dx:GridViewCommandColumn>
 
+                    <dx:GridViewDataTextColumn FieldName="ID" Visible="false" />
+
+                    <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom">
+                        <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom" ValueField="ID" />
+                    </dx:GridViewDataComboBoxColumn>
+
+                    <dx:GridViewDataComboBoxColumn FieldName="Type_Sanction" Caption="Type Sanction">
+                        <PropertiesComboBox>
+                            <Items>
+                                <dx:ListEditItem Text="Avertissement" Value="Avertissement" />
+                                <dx:ListEditItem Text="Licenciement" Value="Licenciement" />
+                                <dx:ListEditItem Text="Mise à Pied" Value="Mise_a_Pied" />
+
+                            </Items>
+                            <ValidationSettings RequiredField-IsRequired="true" />
+                        </PropertiesComboBox>
+                    </dx:GridViewDataComboBoxColumn>
+                    <dx:GridViewDataComboBoxColumn FieldName="Motif_Sanction" Caption="Motif Sanction">
+                        <PropertiesComboBox>
+                            <Items>
+                                <dx:ListEditItem Text="Faute Grave" Value="Faute_grave" />
+                                <dx:ListEditItem Text="Faute Lourde" Value="Faute_lourde" />
+                                <dx:ListEditItem Text="Faute Simple" Value="Faute_simple" />
+
+                            </Items>
+                            <ValidationSettings RequiredField-IsRequired="true" />
+                        </PropertiesComboBox>
+                    </dx:GridViewDataComboBoxColumn>
+                    <dx:GridViewDataDateColumn FieldName="Date_Effet" Caption="Date Debut" Visible="true">
+                        <PropertiesDateEdit EditFormat="Date" UseMaskBehavior="true" DisplayFormatString="dd/MM/yyyy">
+                            <ClientSideEvents GotFocus="ShowCalendar" />
+                        </PropertiesDateEdit>
+                    </dx:GridViewDataDateColumn>
+                    <dx:GridViewDataDateColumn FieldName="Date_Fin" Caption="Date Fin" Visible="true">
+                        <PropertiesDateEdit EditFormat="Date" UseMaskBehavior="true" DisplayFormatString="dd/MM/yyyy">
+                            <ClientSideEvents GotFocus="ShowCalendar" />
+                        </PropertiesDateEdit>
+                    </dx:GridViewDataDateColumn>
+                    <dx:GridViewDataTextColumn FieldName="Description" Visible="true" Caption="Description" />
+
+                </Columns>
+
+                <SettingsCommandButton>
+                    <PreviewChangesButton Text="Preview" />
+                    <EditButton>
+                        <Image IconID="iconbuilder_actions_edit_svg_16x16" Width="16px" />
+                    </EditButton>
+                    <DeleteButton>
+                        <Image IconID="iconbuilder_actions_delete_svg_16x16" Width="16px" />
+                    </DeleteButton>
+                    <CancelButton Text="Cancel">
+                        <Image IconID="iconbuilder_actions_undo_svg_16x16" Width="16px" />
+                    </CancelButton>
+                    <UpdateButton Text="Save">
+                        <Image IconID="iconbuilder_actions_edit_svg_16x16" Width="16px" />
+                    </UpdateButton>
+                </SettingsCommandButton>
+
+                <Styles>
+                    <FocusedRow BackColor="#F0F8FF" ForeColor="Black" />
+                </Styles>
+
+                <SettingsPager PageSize="50" EnableAdaptivity="true">
+                    <PageSizeItemSettings Visible="true" Position="Right" ShowAllItem="true" />
+                </SettingsPager>
+
+                <SettingsEditing Mode="Batch" />
+                <SettingsBehavior AutoExpandAllGroups="true" AllowDragDrop="False" AllowGroup="False" AllowFocusedRow="True" />
+                <Settings ShowFooter="false" ShowColumnHeaders="true" ShowGroupPanel="false" ShowGroupFooter="VisibleIfExpanded"
+                    VerticalScrollableHeight="250" VerticalScrollBarMode="Visible" />
+            </dx:ASPxGridView>
+                 </div>
             <asp:SqlDataSource ID="SqlParcours" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
                 SelectCommand="SelectParcours_Pro" SelectCommandType="StoredProcedure"
                 DeleteCommand="deleteParcours_Pro" DeleteCommandType="StoredProcedure"
@@ -292,12 +393,40 @@
                     <asp:Parameter Name="Description" />
                 </InsertParameters>
             </asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlSanction" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
+                SelectCommand="SelectSanction" SelectCommandType="StoredProcedure"
+                DeleteCommand="deleteSanction" DeleteCommandType="StoredProcedure"
+                UpdateCommand="updateSanction" UpdateCommandType="StoredProcedure"
+                InsertCommand="insertSanction" InsertCommandType="StoredProcedure">
+                <DeleteParameters>
+                    <asp:Parameter Name="ID" />
+                </DeleteParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="ID" />
+                    <asp:Parameter Name="ID_Employes" />
+                    <asp:Parameter Name="Type_Sanction" />
+                    <asp:Parameter Name="Motif_Sanction" />
+                    <asp:Parameter Name="Date_Effet" />
+                    <asp:Parameter Name="Date_Fin" />
+                    <asp:Parameter Name="Description" />
+
+                </UpdateParameters>
+                <InsertParameters>
+                    <asp:Parameter Name="ID_Employes" />
+                    <asp:Parameter Name="Type_Sanction" />
+                    <asp:Parameter Name="Motif_Sanction" />
+                    <asp:Parameter Name="Date_Effet" />
+                    <asp:Parameter Name="Date_Fin" />
+                    <asp:Parameter Name="Description" />
+
+                </InsertParameters>
+            </asp:SqlDataSource>
 
             <asp:SqlDataSource ID="SqlEmployes" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
                 SelectCommand="SelectEmployes" SelectCommandType="StoredProcedure" />
             <asp:SqlDataSource ID="SqlMouvement" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
                 SelectCommand="SelectMouvement" SelectCommandType="StoredProcedure" />
-        </div>
+       
     </form>
 </body>
 </html>
