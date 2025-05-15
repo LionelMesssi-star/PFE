@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Mouvement" />
+  <DataSources>
+    <SqlDataSource Name="Fonction_Mouvement" ComponentName="sqlDataSource1">
+      <Connection Name="ErpbilansocialConnectionString" FromAppConfig="true" />
+      <Query Type="StoredProcQuery" Name="Fonction_Mouvement">
+        <ProcName>Fonction_Mouvement</ProcName>
+      </Query>
+      <Query Type="StoredProcQuery" Name="Afficher_Sanction">
+        <ProcName>Afficher_Sanction</ProcName>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Mouvement" DataSource="sqlDataSource1" DataMember="Fonction_Mouvement">
+      <DataItems>
+        <Dimension DataMember="Type_Mouvement" DefaultId="DataItem2" />
+        <Measure DataMember="Nbr_2023" DefaultId="DataItem1" />
+        <Measure DataMember="Nbr_2024" DefaultId="DataItem3" />
+        <Measure DataMember="Nbr_2025" DefaultId="DataItem4" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem3" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem4" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

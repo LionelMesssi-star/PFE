@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Bilan Social" />
+  <DataSources>
+    <SqlDataSource Name="countEffTotal" ComponentName="sqlDataSource1">
+      <Connection Name="ErpbilansocialConnectionString" FromAppConfig="true" />
+      <Query Type="StoredProcQuery" Name="SelectEmployes">
+        <ProcName>SelectEmployes</ProcName>
+      </Query>
+      <Query Type="StoredProcQuery" Name="sp">
+        <ProcName>sp_GetEmployesWithDetails</ProcName>
+      </Query>
+      <Query Type="StoredProcQuery" Name="Afficher_EffectifTT">
+        <ProcName>Afficher_EffectifTT</ProcName>
+      </Query>
+      <Query Type="StoredProcQuery" Name="Afficher_Sexee">
+        <ProcName>Afficher_Sexee</ProcName>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="sqlDataSource1" DataMember="Afficher_EffectifTT">
+      <DataItems>
+        <Measure DataMember="Nombre" DefaultId="DataItem0" />
+        <Dimension DataMember="Valeur" DefaultId="DataItem2" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Sexe" DataSource="sqlDataSource1" DataMember="Afficher_Sexee" LabelContentType="ArgumentValueAndPercent" ContentArrangementMode="FixedRowCount">
+      <DataItems>
+        <Measure DataMember="Nombre" DefaultId="DataItem0" />
+        <Dimension DataMember="Categorie" DefaultId="DataItem1" />
+        <Dimension DataMember="Valeur" DefaultId="DataItem2" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem0" />
+      </Values>
+    </Pie>
+    <Grid ComponentName="gridDashboardItem1" Name="" DataSource="sqlDataSource1" DataMember="sp">
+      <DataItems>
+        <Dimension DataMember="Nom" DefaultId="DataItem0" />
+        <Dimension DataMember="Prenom" DefaultId="DataItem1" />
+        <Measure DataMember="ID" DefaultId="DataItem2" />
+        <Dimension DataMember="Sexe" DefaultId="DataItem3" />
+        <Dimension DataMember="Tranche_Age" DefaultId="DataItem4" />
+        <Dimension DataMember="Departement" DefaultId="DataItem5" />
+        <Dimension DataMember="Fonction" DefaultId="DataItem6" />
+        <Dimension DataMember="Nationalite" DefaultId="DataItem7" />
+        <Dimension DataMember="Type_Contrat" DefaultId="DataItem8" />
+      </DataItems>
+      <GridColumns>
+        <GridMeasureColumn>
+          <Measure DefaultId="DataItem2" />
+        </GridMeasureColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem1" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem3" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem4" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem5" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem6" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem8" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem7" />
+        </GridDimensionColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutItem DashboardItem="chartDashboardItem1" />
+      <LayoutGroup>
+        <LayoutItem DashboardItem="gridDashboardItem1" />
+        <LayoutItem DashboardItem="pieDashboardItem1" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

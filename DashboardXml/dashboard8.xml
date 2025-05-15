@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Bilan Social" />
+  <DataSources>
+    <SqlDataSource Name="Afficher_Sexe" ComponentName="sqlDataSource1">
+      <Connection Name="ErpbilansocialConnectionString" FromAppConfig="true" />
+      <Query Type="StoredProcQuery" Name="Afficher_Sexe">
+        <ProcName>Afficher_Sexe</ProcName>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="sqlDataSource1" DataMember="Afficher_Sexe">
+      <DataItems>
+        <Dimension DataMember="Description" DefaultId="DataItem0" />
+        <Measure DataMember="Total" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

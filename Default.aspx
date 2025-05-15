@@ -9,6 +9,7 @@
 
 <asp:Content ID="ContentPlaceHolder1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
+
         .w3-badge, .w3-tag {
             color: #fff;
             display: inline-block;
@@ -74,7 +75,377 @@
             text-align: center !important;
         }
     </style>
+    <style>
+        /* Theme Bleu et Orange - Modern UI */
 
+:root {
+  /* Couleurs principales */
+  --blue-primary: #1a73e8;
+  --blue-dark: #0d47a1;
+  --blue-light: #e8f0fe;
+  --orange-primary: #ff6b01;
+  --orange-light: #ffead7;
+  --white: #ffffff;
+  --gray-text: #555555;
+  --gray-light: #f5f5f5;
+  --gray-border: #e0e0e0;
+  
+  /* Ombres */
+  --shadow-sm: 0 2px 5px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.16);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease-out;
+  --transition-normal: 0.3s ease;
+}
+
+/* ===== TYPOGRAPHIE ===== */
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: var(--gray-text);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Segoe UI Light', 'Roboto Light', sans-serif;
+  color: var(--blue-dark);
+}
+
+/* ===== LAYOUT GÉNÉRAL ===== */
+.navbar-inverse {
+  background: linear-gradient(to right, var(--blue-dark), var(--blue-primary));
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+/* Style pour l'iframe principal */
+iframe {
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-sm) !important;
+  border: 1px solid var(--gray-border) !important;
+  background-color: var(--white) !important;
+  transition: all var(--transition-normal);
+}
+
+/* ===== RIBBON ===== */
+/* Ribbon principal */
+.dxr-tabContainer {
+  border: none !important;
+}
+
+.dxr-tabContent {
+  background: linear-gradient(to bottom, var(--blue-primary), var(--blue-dark)) !important;
+  height: 100px;
+}
+
+.dxr-tab {
+  color: var(--white) !important;
+  transition: all var(--transition-fast);
+  border: none !important;
+}
+
+.dxr-activeTab {
+  background-color: transparent !important;
+  position: relative;
+  font-weight: bold !important;
+}
+
+.dxr-activeTab:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--orange-primary);
+}
+
+.dxr-tabContent .dxr-itemList {
+  background: transparent !important;
+}
+
+.dxr-item.dxr-buttonItem {
+  background: transparent !important;
+  border: none !important;
+  transition: all var(--transition-fast);
+}
+
+.dxr-item.dxr-buttonItem:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dxr-buttonItem.dxr-itemHover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Étiquettes des groupes Ribbon */
+.dxr-groupLabel {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 11px !important;
+}
+
+/* Séparateurs de groupes */
+.dxr-groupSep {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Texte des items */
+.dxr-lblContent {
+  color: var(--white) !important;
+  font-size: 12px !important;
+}
+
+/* Barre d'application */
+.dxr-fileTabNewWindowButtonContainer,
+.dxr-fileTab {
+  background: var(--blue-dark) !important;
+  color: var(--white) !important;
+  height: 30px !important;
+}
+
+/* ===== BOUTONS ===== */
+.dxb-hb {
+  border-radius: 4px !important;
+  transition: all var(--transition-fast) !important;
+}
+
+/* Bouton primaire */
+.dxbButtonHover_Office365, 
+.dxb-hb.dxbButtonHover_Office365 {
+  background-color: var(--blue-primary) !important;
+  color: var(--white) !important;
+  border-color: var(--blue-primary) !important;
+}
+
+.dxbButtonPressed_Office365, 
+.dxb-hb.dxbButtonPressed_Office365 {
+  background-color: var(--blue-dark) !important;
+  color: var(--white) !important;
+  border-color: var(--blue-dark) !important;
+}
+
+/* Bouton action/important */
+.dxb-hb.dxb-danger {
+  background-color: var(--orange-primary) !important;
+  color: var(--white) !important;
+  border-color: var(--orange-primary) !important;
+}
+
+.dxb-hb.dxb-danger:hover {
+  background-color: #e65100 !important;
+  border-color: #e65100 !important;
+}
+
+/* ===== GRILLES ET TABLEAUX ===== */
+.dxgvHeader_Office365 {
+  background-color: var(--blue-light) !important;
+  color: var(--blue-dark) !important;
+  font-weight: 600 !important;
+  border-color: var(--gray-border) !important;
+}
+
+.dxgvDataRow_Office365 {
+  background-color: var(--white) !important;
+  border-color: var(--gray-border) !important;
+}
+
+.dxgvDataRow_Office365:nth-child(even) {
+  background-color: var(--gray-light) !important;
+}
+
+.dxgvDataRowHover_Office365 {
+  background-color: var(--blue-light) !important;
+}
+
+.dxgvSelectedRow_Office365 {
+  background-color: var(--orange-light) !important;
+  color: var(--gray-text) !important;
+}
+
+/* ===== POPUPS ET MODALES ===== */
+.dxpc-mainDiv {
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-lg) !important;
+  overflow: hidden !important;
+}
+
+.dxpc-header {
+  background: var(--blue-primary) !important;
+  color: var(--white) !important;
+  padding: 12px 16px !important;
+  border: none !important;
+}
+
+.dxpc-headerText {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+.dxpc-closeButton {
+  color: var(--white) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.dxpc-closeButton:hover {
+  color: var(--orange-primary) !important;
+}
+
+.dxpc-contentWrapper {
+  background-color: var(--white) !important;
+  padding: 20px !important;
+  border: none !important;
+}
+
+/* ===== FORMULAIRES ===== */
+.dxeTextBox,
+.dxeButtonEdit {
+  border: 1px solid var(--gray-border) !important;
+  border-radius: 4px !important;
+  padding: 6px 12px !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.dxeTextBox:focus,
+.dxeButtonEdit:focus {
+  border-color: var(--blue-primary) !important;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.25) !important;
+}
+
+.dxeRadioButtonChecked {
+  color: var(--orange-primary) !important;
+}
+
+.dxeBase {
+  color: var(--gray-text) !important;
+}
+
+/* Labels */
+.dxeCaption {
+  font-weight: 600 !important;
+  color: var(--gray-text) !important;
+}
+
+/* ===== NAVIGATIONS COMPLÉMENTAIRES ===== */
+.dxm-main {
+  background-color: var(--white) !important;
+  border: none !important;
+  box-shadow: var(--shadow-sm) !important;
+  border-radius: 4px !important;
+}
+
+.dxm-item {
+  padding: 8px 16px !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.dxm-hovered {
+  background-color: var(--blue-light) !important;
+}
+
+.dxm-selected {
+  background-color: var(--blue-primary) !important;
+  color: var(--white) !important;
+}
+
+/* ===== ÉLÉMENTS PERSONNALISÉS ===== */
+/* Style pour le nom d'utilisateur */
+#lblNomSession {
+  color: var(--white) !important;
+  background-color: transparent !important;
+  border-bottom: 2px solid var(--orange-primary) !important;
+  padding-bottom: 2px !important;
+  transition: all var(--transition-fast) !important;
+}
+
+#lblNomSession:hover {
+  color: var(--orange-light) !important;
+}
+
+/* Sélecteur de langue */
+.LanguageComboBox {
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+  background-color: transparent !important;
+}
+
+/* Styles W3 existants modifiés */
+.w3-red {
+  background-color: var(--orange-primary) !important;
+}
+
+.w3-badge {
+  background-color: var(--orange-primary) !important;
+  border-radius: 50% !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media screen and (max-width: 768px) {
+  .dxr-tabContent {
+    height: 60px !important;
+  }
+  
+  .dxr-fileTab {
+    height: 25px !important;
+  }
+  
+  .dxbButton {
+    min-height: 44px !important;
+  }
+}
+
+/* ===== ICÔNES ET IMAGES ===== */
+/* Shadow léger pour les icônes du ruban */
+.dxr-img32,
+.dxr-img16 {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2)) !important;
+}
+
+/* Remplacement des couleurs des icônes grises */
+[class*="-32x32gray"] {
+  filter: hue-rotate(200deg) saturate(70%) brightness(90%) !important;
+}
+
+/* Icônes spéciales en orange */
+[class*="security"],
+[class*="alert"],
+[class*="priority"],
+[class*="warning"] {
+  filter: hue-rotate(25deg) saturate(170%) brightness(105%) !important;
+}
+
+/* ===== ANIMATIONS ===== */
+/* Animation des popups */
+.dxpc-mainDiv {
+  animation: fadeInScale 0.3s ease-out forwards !important;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation de transition des pages */
+iframe {
+  animation: fadeIn 0.4s ease-out forwards !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+    </style>
     <link href="Theme/Theme.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         function popup(url, height, width, title) {
@@ -372,7 +743,7 @@
                         SetSplitterPane('Pagehomes.aspx');
                         break;
                     case "tabGestWorkflow":
-                        SetSplitterPane('Bilan.aspx');
+                        SetSplitterPane('Effectif.aspx');
                         break;
                     case "tabGestWorkflowGTT":
                         SetSplitterPane('GTT_Conventions_Resulta.aspx');
@@ -382,7 +753,7 @@
                         break;
 
                     case "tabManagement":
-                        SetSplitterPane('Management.aspx');
+                        SetSplitterPane('Employes.aspx');
                         break;
 
                         break;

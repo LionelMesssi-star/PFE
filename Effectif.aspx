@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Effectif.aspx.cs" Inherits="Effectif" %>
+ <%@ Register Assembly="DevExpress.Dashboard.v20.1.Web.WebForms, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.DashboardWeb" TagPrefix="dx" %>
 
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 
@@ -323,6 +324,7 @@
         }
     </style>
     <script>
+
         /* JavaScript inchangé */
         document.addEventListener('DOMContentLoaded', function () {
             // Particle Background
@@ -416,102 +418,7 @@
                 init();
             });
 
-            // Fetch Chart Data via AJAX
-            function initializeCharts() {
-                // Contrat de Travail
-                $.ajax({
-                    url: 'Effectif.aspx/GetContractData',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({}),
-                    success: function (response) {
-                        const data = JSON.parse(response.d);
-                        const contractData = {
-                            labels: data.map(item => item.Description),
-                            datasets: [{
-                                label: 'Contrat de Travail 2025',
-                                data: data.map(item => item.NbrN),
-                                backgroundColor: ['#2563eb', '#f97316', '#22c55e']
-                            }]
-                        };
-                        new Chart(document.getElementById('contractChart'), {
-                            type: 'bar',
-                            data: contractData,
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                scales: { y: { beginAtZero: true } }
-                            }
-                        });
-                    },
-                    error: function () {
-                        console.error('Failed to fetch contract data');
-                    }
-                });
-
-                // Sexe
-                $.ajax({
-                    url: 'Effectif.aspx/GetSexeData',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({}),
-                    success: function (response) {
-                        const data = JSON.parse(response.d);
-                        const sexData = {
-                            labels: data.map(item => item.Sexe),
-                            datasets: [{
-                                label: 'Sexe 2025',
-                                data: data.map(item => item['2025']),
-                                backgroundColor: ['#6b7280', '#2563eb']
-                            }]
-                        };
-                        new Chart(document.getElementById('sexChart'), {
-                            type: 'pie',
-                            data: sexData,
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false
-                            }
-                        });
-                    },
-                    error: function () {
-                        console.error('Failed to fetch sexe data');
-                    }
-                });
-
-                // Tranche d'age
-                $.ajax({
-                    url: 'Effectif.aspx/GetAgeData',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({}),
-                    success: function (response) {
-                        const data = JSON.parse(response.d);
-                        const ageData = {
-                            labels: data.map(item => item.TrancheAge),
-                            datasets: [{
-                                label: 'Tranche d\'age 2025',
-                                data: data.map(item => item['2025']),
-                                backgroundColor: ['#2563eb', '#f97316', '#22c55e', '#9ca3af', '#dc2626']
-                            }]
-                        };
-                        new Chart(document.getElementById('ageChart'), {
-                            type: 'bar',
-                            data: ageData,
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                scales: { y: { beginAtZero: true } }
-                            }
-                        });
-                    },
-                    error: function () {
-                        console.error('Failed to fetch age data');
-                    }
-                });
-            }
-
-            initializeCharts();
+            
         });
     </script>
 </head>
@@ -520,7 +427,8 @@
     <form id="form1" runat="server">
         <div class="dashboard-header">
             <div class="dashboard-header-title">
-                <span>174 : Effectif Total, au 08 Mai 2025</span>
+                <span>174 : Effectif Total,                    <span><%= DateTime.Now.ToString("dd/MM/yyyy HH:mm") %></span>
+5</span>
             </div>
         </div>
 
@@ -710,6 +618,14 @@
                                         </dx:LayoutItemNestedControlContainer>
                                     </LayoutItemNestedControlCollection>
                                 </dx:LayoutItem>
+                                                        <dx:LayoutItem ShowCaption="False">
+    <LayoutItemNestedControlCollection>
+        <dx:LayoutItemNestedControlContainer>
+                                                                <dx:ASPxDashboard ID="Eff" Width="100%"  Height="250px"  WorkingMode="ViewerOnly" runat="server" ></dx:ASPxDashboard>
+
+        </dx:LayoutItemNestedControlContainer>
+    </LayoutItemNestedControlCollection>
+</dx:LayoutItem>
                             </Items>
                         </dx:LayoutGroup>
                     </Items>

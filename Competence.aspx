@@ -82,8 +82,8 @@
 </script>
         <div>
             <div>
-                
- <asp:SqlDataSource ID="SqlComp" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
+
+                <asp:SqlDataSource ID="SqlComp" runat="server" ConnectionString="<%$ ConnectionStrings:ErpbilansocialConnectionString %>"
                     SelectCommand="SelectCompetence" SelectCommandType="StoredProcedure"
                     DeleteCommand="deleteCompetence" DeleteCommandType="StoredProcedure"
                     UpdateCommand="updateCompetence" UpdateCommandType="StoredProcedure"
@@ -144,6 +144,10 @@
                                         <dx:ListEditItem Text="Débutant" Value="Débutant" />
                                         <dx:ListEditItem Text="Moyen" Value="Moyen" />
                                         <dx:ListEditItem Text="Avancé" Value="Avancé" />
+                                        <dx:ListEditItem Text="Intérmediaire" Value="Intérmediaire" />
+                                        <dx:ListEditItem Text="Expert" Value="Expert" />
+
+
                                     </Items>
                                     <ValidationSettings RequiredField-IsRequired="true" />
                                 </PropertiesComboBox>
@@ -155,6 +159,8 @@
                                         <dx:ListEditItem Text="Débutant" Value="Débutant" />
                                         <dx:ListEditItem Text="Moyen" Value="Moyen" />
                                         <dx:ListEditItem Text="Avancé" Value="Avancé" />
+                                        <dx:ListEditItem Text="Intérmediaire" Value="Intérmediaire" />
+                                        <dx:ListEditItem Text="Expert" Value="Expert" />
                                     </Items>
                                     <ValidationSettings RequiredField-IsRequired="true" />
                                 </PropertiesComboBox>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Compétence" />
+  <DataSources>
+    <SqlDataSource Name="Afficher_Competence" ComponentName="sqlDataSource1">
+      <Connection Name="ErpbilansocialConnectionString" FromAppConfig="true" />
+      <Query Type="StoredProcQuery" Name="Afficher_Competence">
+        <ProcName>Afficher_Competence</ProcName>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Parameters>
+    <Parameter Name="Parameter1" />
+  </Parameters>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="sqlDataSource1" DataMember="Afficher_Competence">
+      <DataItems>
+        <Measure DataMember="Expert" DefaultId="DataItem2" />
+        <Measure DataMember="Avance" DefaultId="DataItem3" />
+        <Measure DataMember="Intermediaire" DefaultId="DataItem4" />
+        <Measure DataMember="Moyen" DefaultId="DataItem5" />
+        <Measure DataMember="Debutant" DefaultId="DataItem6" />
+        <Dimension DataMember="Competence" DefaultId="DataItem7" />
+        <Dimension DataMember="Total_Employes" DefaultId="DataItem0" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem7" />
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem2" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem3" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem4" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem5" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem6" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

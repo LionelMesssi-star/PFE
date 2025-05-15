@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Sanction" />
+  <DataSources>
+    <SqlDataSource Name="Afficher_Sanction" ComponentName="sqlDataSource1">
+      <Connection Name="ErpbilansocialConnectionString" FromAppConfig="true" />
+      <Query Type="StoredProcQuery" Name="Afficher_Sanction">
+        <ProcName>Afficher_Sanction</ProcName>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="sqlDataSource1" DataMember="Afficher_Sanction">
+      <DataItems>
+        <Measure DataMember="Nbr_2023" DefaultId="DataItem0" />
+        <Measure DataMember="Nbr_2024" DefaultId="DataItem1" />
+        <Measure DataMember="Nbr_2025" DefaultId="DataItem2" />
+        <Dimension DataMember="Type_Sanction" DefaultId="DataItem3" />
+        <Measure DataMember="Type_Sanction" SummaryType="Count" DefaultId="DataItem4" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem3" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem2" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

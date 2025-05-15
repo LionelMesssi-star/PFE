@@ -238,12 +238,7 @@
         <div class="container">
             <div class="header">
                 <h1>💰 Gestion des Salaires</h1>
-                <div class="action-buttons">
-                    <dx:ASPxButton runat="server" Text="Exporter Excel" Theme="Office365" IconID="export_exporttoxlsx_svg_16x16" AutoPostBack="false">
-                        <ClientSideEvents Click="function(s, e) { gridExport.WriteXlsxToResponse({ fileName: 'Salaires_' + new Date().toLocaleDateString() + '.xlsx' }); }" />
-                    </dx:ASPxButton>
-                    <dx:ASPxButton runat="server" Text="Imprimer" Theme="Office365" IconID="print_print_svg_16x16" />
-                </div>
+                 
             </div>
 
             <div class="status-bar">
@@ -263,12 +258,11 @@
                 
 
                 <dx:ASPxGridView ID="GridCl" runat="server" DataSourceID="SqlSalaire" Width="100%" Theme="Office365" 
-                    KeyFieldName="ID_salaire" ClientInstanceName="GridCl" OnDataBound="GridCl_DataBound">
+                    KeyFieldName="ID_salaire" ClientInstanceName="GridCl"  >
                     <ClientSideEvents ContextMenu="grdInterventionContextMenu"/>
 
                     <SettingsSearchPanel Visible="true" ShowApplyButton="true" />
-                    <SettingsText SearchPanelEditorNullText="Rechercher un salaire..." />
-
+ 
                     <Columns>
                         <dx:GridViewCommandColumn Width="150px" VisibleIndex="0" 
                             ShowNewButtonInHeader="true" ShowEditButton="true" ShowDeleteButton="true">

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Employes formés" />
+  <DataSources>
+    <SqlDataSource Name="Afficher_Employes_Forme" ComponentName="sqlDataSource1">
+      <Connection Name="ErpbilansocialConnectionString" FromAppConfig="true" />
+      <Query Type="StoredProcQuery" Name="Afficher_Employes_Forme">
+        <ProcName>Afficher_Employes_Forme</ProcName>
+      </Query>
+      <Query Type="StoredProcQuery" Name="Afficher_Formation_Depense">
+        <ProcName>Afficher_Formation_Depense</ProcName>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Employes Formés" ParentContainer="groupDashboardItem1" DataSource="sqlDataSource1" DataMember="Afficher_Employes_Forme">
+      <DataItems>
+        <Measure DataMember="Nombre_Employes_Formes" DefaultId="DataItem0">
+          <NumericFormat Precision="127" Unit="Millions" />
+        </Measure>
+        <Dimension DataMember="Annee" TopNEnabled="true" TopNMeasure="DataItem0" DefaultId="DataItem1">
+          <NumericFormat FormatType="General" Precision="9" Unit="Thousands" />
+        </Dimension>
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <AxisY Title="Nombre Total " />
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+      <AxisX>
+        <NumericFormat Precision="4" Unit="Ones" />
+      </AxisX>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Employés Fromes" DataSource="sqlDataSource1" DataMember="Afficher_Employes_Forme" PieType="Donut">
+      <DataItems>
+        <Measure DataMember="Nombre_Employes_Formes" Name="Nombre d'employes  formés" DefaultId="DataItem0" />
+        <Dimension DataMember="Annee" TopNEnabled="true" TopNMeasure="DataItem0" DefaultId="DataItem1">
+          <NumericFormat FormatType="General" />
+        </Dimension>
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem0" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem2" Name="Depense Formation" DataSource="sqlDataSource1" DataMember="Afficher_Formation_Depense">
+      <DataItems>
+        <Measure DataMember="Nbr2023" SummaryType="Count" DefaultId="DataItem0" />
+        <Dimension DataMember="Formation" Name="Type Depenses " DefaultId="DataItem1" />
+        <Measure DataMember="Nbr2024" DefaultId="DataItem2" />
+        <Measure DataMember="Nbr2025" DefaultId="DataItem3" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <AxisY Title="Année">
+            <NumericFormat Precision="0" Unit="Ones" />
+          </AxisY>
+          <Series>
+            <Simple Name="2023">
+              <Value DefaultId="DataItem0" />
+            </Simple>
+            <Simple Name="2024">
+              <Value DefaultId="DataItem2" />
+            </Simple>
+            <Simple Name="2025">
+              <Value DefaultId="DataItem3" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <Groups>
+    <Group ComponentName="groupDashboardItem1" Name="Group 1" />
+  </Groups>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="pieDashboardItem1" />
+      <LayoutItem DashboardItem="chartDashboardItem2" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

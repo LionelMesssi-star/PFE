@@ -9,10 +9,7 @@ public partial class Salaire : System.Web.UI.Page
        
     }
 
-    protected void GridCl_DataBound(object sender, EventArgs e)
-    {
-        lblRecordCount.Text = GridCl.VisibleRowCount.ToString() + " salaires";
-    }
+    
 
     
 }

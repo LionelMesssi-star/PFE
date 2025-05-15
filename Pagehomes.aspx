@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Pagehomes.aspx.cs" Inherits="Pagehomes" %>
-
-<%@ Register Assembly="DevExpress.Dashboard.v20.1.Web.WebForms, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.DashboardWeb" TagPrefix="dx" %>
+ <%@ Register Assembly="DevExpress.Dashboard.v20.1.Web.WebForms, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.DashboardWeb" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -13,7 +12,9 @@
 
     <form id="form1" runat="server">
     <div>
-     Dashboard
+     <div>
+       <dx:ASPxDashboard ID="EffTT" Width="100%"  Height="800px"  WorkingMode="Designer" runat="server" ></dx:ASPxDashboard>
+    </div>
     </div>
     </form>
 </body>
