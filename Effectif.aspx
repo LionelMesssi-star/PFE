@@ -428,7 +428,7 @@
         <div class="dashboard-header">
             <div class="dashboard-header-title">
                 <span>174 : Effectif Total,                    <span><%= DateTime.Now.ToString("dd/MM/yyyy HH:mm") %></span>
-5</span>
+</span>
             </div>
         </div>
 

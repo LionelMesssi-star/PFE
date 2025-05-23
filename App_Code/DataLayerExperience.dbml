@@ -6,7 +6,7 @@
       <Column Name="Password" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Nom_Prenom" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ID_Role" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ID_Role" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.countSexe" Method="countSexe">
@@ -132,6 +132,40 @@
       <Column Name="AnciennteH" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AnciennteF" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AnciennteMoyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Afficher_Salaire_Min" Method="Afficher_Salaire_Min">
+    <ElementType Name="Afficher_Salaire_MinResult">
+      <Column Name="Sexe" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Salaire_Minimum" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Afficher_Salaire_Max" Method="Afficher_Salaire_Max">
+    <ElementType Name="Afficher_Salaire_MaxResult">
+      <Column Name="Sexe" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Salaire_Max" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.insertUsersession" Method="insertUsersession">
+    <Parameter Name="Nom_Prenom" Parameter="nom_Prenom" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ID_Role" Parameter="iD_Role" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Afficher_Abs_Max" Method="Afficher_Abs_Max">
+    <ElementType Name="Afficher_Abs_MaxResult">
+      <Column Name="ID_Sexe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sexe" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Max_Jours_Absence" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Afficher_Abs_Moyen" Method="Afficher_Abs_Moyen">
+    <ElementType Name="Afficher_Abs_MoyenResult">
+      <Column Name="ID_Sexe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sexe" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Moyenne_Jours_Absence" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

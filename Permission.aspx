@@ -44,13 +44,13 @@
 
         /* Conteneur principal */
         #form1 {
-            max-width: 1500px;
+            max-width: 1300px;
             width: 100%;
             background: #ffffff;
             border-radius: 16px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             padding: 24px;
-            min-height: auto;
+            max-height: auto;
             animation: fadeIn 0.6s ease-out;
             display: flex;
             flex-direction: column;
@@ -374,8 +374,7 @@
             display: block;
             width: 16px;
             height: 16px;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iIzRiNTU2MyIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMzIuNDksMjI0LjUsMTc4LjQzLDE3MC40M2EyMS4yNiwyMS4yNiwwLDAsMC03LjM0LTUuNDUsOTYsOTYsMCwxLDAtMTI3LjgyLDEyNy44MiwyMS4yNiwyMS2Niw0LDAsMCwwLDkuNDUsNy4zNGw1NC4wNiw1NC4wNmE4LDAsMCwwLDExLjMyLDAsOCw4LDAsMCwwLDAtMTEuMzJabS0zOC44MS0xNS4zNmE4MCw4MCwwLDExLDE2OS43OC0xNjkuNzgsODAsODAsMCwwLDEtMTY5Ljc4LDE2OS43OFoiPjwvcGF0aD48L3N2Zz4=') no-repeat center;
-            position: absolute;
+             position: absolute;
             left: 10px;
             top: 50%;
             transform: translateY(-50%);

@@ -38,6 +38,7 @@ base(global::System.Configuration.ConfigurationManager.ConnectionStrings["Erpbil
     {
         OnCreated();
     }
+
     public DataLayerExperienceDataContext(string connection) : 
 			base(connection, mappingSource)
 	{
@@ -181,6 +182,41 @@ base(global::System.Configuration.ConfigurationManager.ConnectionStrings["Erpbil
 		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		return ((ISingleResult<CountAnciennteResult>)(result.ReturnValue));
 	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Afficher_Salaire_Min")]
+	public ISingleResult<Afficher_Salaire_MinResult> Afficher_Salaire_Min()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<Afficher_Salaire_MinResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Afficher_Salaire_Max")]
+	public ISingleResult<Afficher_Salaire_MaxResult> Afficher_Salaire_Max()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<Afficher_Salaire_MaxResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.insertUsersession")]
+	public int insertUsersession([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nom_Prenom", DbType="NVarChar(MAX)")] string nom_Prenom, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Login", DbType="NVarChar(MAX)")] string login, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(MAX)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Password", DbType="NVarChar(MAX)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID_Role", DbType="Int")] System.Nullable<int> iD_Role)
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nom_Prenom, login, email, password, iD_Role);
+		return ((int)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Afficher_Abs_Max")]
+	public ISingleResult<Afficher_Abs_MaxResult> Afficher_Abs_Max()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<Afficher_Abs_MaxResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Afficher_Abs_Moyen")]
+	public ISingleResult<Afficher_Abs_MoyenResult> Afficher_Abs_Moyen()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<Afficher_Abs_MoyenResult>)(result.ReturnValue));
+	}
 }
 
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usersession")]
@@ -199,7 +235,7 @@ public partial class Usersession : INotifyPropertyChanging, INotifyPropertyChang
 	
 	private string _Nom_Prenom;
 	
-	private string _ID_Role;
+	private System.Nullable<int> _ID_Role;
 	
     #region Définitions de méthodes d'extensibilité
     partial void OnLoaded();
@@ -215,7 +251,7 @@ public partial class Usersession : INotifyPropertyChanging, INotifyPropertyChang
     partial void OnEmailChanged();
     partial void OnNom_PrenomChanging(string value);
     partial void OnNom_PrenomChanged();
-    partial void OnID_RoleChanging(string value);
+    partial void OnID_RoleChanging(System.Nullable<int> value);
     partial void OnID_RoleChanged();
     #endregion
 	
@@ -324,8 +360,8 @@ public partial class Usersession : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Role", DbType="NVarChar(MAX)")]
-	public string ID_Role
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Role", DbType="Int")]
+	public System.Nullable<int> ID_Role
 	{
 		get
 		{
@@ -1444,6 +1480,218 @@ public partial class CountAnciennteResult
 			if ((this._AnciennteMoyen != value))
 			{
 				this._AnciennteMoyen = value;
+			}
+		}
+	}
+}
+
+public partial class Afficher_Salaire_MinResult
+{
+	
+	private string _Sexe;
+	
+	private System.Nullable<double> _Salaire_Minimum;
+	
+	public Afficher_Salaire_MinResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sexe", DbType="NVarChar(MAX)")]
+	public string Sexe
+	{
+		get
+		{
+			return this._Sexe;
+		}
+		set
+		{
+			if ((this._Sexe != value))
+			{
+				this._Sexe = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Salaire_Minimum", DbType="Float")]
+	public System.Nullable<double> Salaire_Minimum
+	{
+		get
+		{
+			return this._Salaire_Minimum;
+		}
+		set
+		{
+			if ((this._Salaire_Minimum != value))
+			{
+				this._Salaire_Minimum = value;
+			}
+		}
+	}
+}
+
+public partial class Afficher_Salaire_MaxResult
+{
+	
+	private string _Sexe;
+	
+	private System.Nullable<double> _Salaire_Max;
+	
+	public Afficher_Salaire_MaxResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sexe", DbType="NVarChar(MAX)")]
+	public string Sexe
+	{
+		get
+		{
+			return this._Sexe;
+		}
+		set
+		{
+			if ((this._Sexe != value))
+			{
+				this._Sexe = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Salaire_Max", DbType="Float")]
+	public System.Nullable<double> Salaire_Max
+	{
+		get
+		{
+			return this._Salaire_Max;
+		}
+		set
+		{
+			if ((this._Salaire_Max != value))
+			{
+				this._Salaire_Max = value;
+			}
+		}
+	}
+}
+
+public partial class Afficher_Abs_MaxResult
+{
+	
+	private System.Nullable<int> _ID_Sexe;
+	
+	private string _Sexe;
+	
+	private System.Nullable<int> _Max_Jours_Absence;
+	
+	public Afficher_Abs_MaxResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Sexe", DbType="Int")]
+	public System.Nullable<int> ID_Sexe
+	{
+		get
+		{
+			return this._ID_Sexe;
+		}
+		set
+		{
+			if ((this._ID_Sexe != value))
+			{
+				this._ID_Sexe = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sexe", DbType="VarChar(11) NOT NULL", CanBeNull=false)]
+	public string Sexe
+	{
+		get
+		{
+			return this._Sexe;
+		}
+		set
+		{
+			if ((this._Sexe != value))
+			{
+				this._Sexe = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Max_Jours_Absence", DbType="Int")]
+	public System.Nullable<int> Max_Jours_Absence
+	{
+		get
+		{
+			return this._Max_Jours_Absence;
+		}
+		set
+		{
+			if ((this._Max_Jours_Absence != value))
+			{
+				this._Max_Jours_Absence = value;
+			}
+		}
+	}
+}
+
+public partial class Afficher_Abs_MoyenResult
+{
+	
+	private System.Nullable<int> _ID_Sexe;
+	
+	private string _Sexe;
+	
+	private System.Nullable<int> _Moyenne_Jours_Absence;
+	
+	public Afficher_Abs_MoyenResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Sexe", DbType="Int")]
+	public System.Nullable<int> ID_Sexe
+	{
+		get
+		{
+			return this._ID_Sexe;
+		}
+		set
+		{
+			if ((this._ID_Sexe != value))
+			{
+				this._ID_Sexe = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sexe", DbType="VarChar(11) NOT NULL", CanBeNull=false)]
+	public string Sexe
+	{
+		get
+		{
+			return this._Sexe;
+		}
+		set
+		{
+			if ((this._Sexe != value))
+			{
+				this._Sexe = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Moyenne_Jours_Absence", DbType="Int")]
+	public System.Nullable<int> Moyenne_Jours_Absence
+	{
+		get
+		{
+			return this._Moyenne_Jours_Absence;
+		}
+		set
+		{
+			if ((this._Moyenne_Jours_Absence != value))
+			{
+				this._Moyenne_Jours_Absence = value;
 			}
 		}
 	}

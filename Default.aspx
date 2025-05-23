@@ -75,7 +75,7 @@
             text-align: center !important;
         }
     </style>
-    <style>
+    <%--<style>
         /* Theme Bleu et Orange - Modern UI */
 
 :root {
@@ -445,7 +445,7 @@ iframe {
     opacity: 1;
   }
 }
-    </style>
+    </style>--%>
     <link href="Theme/Theme.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         function popup(url, height, width, title) {
@@ -734,8 +734,7 @@ iframe {
 
     </script>
 
-    <link href="/Resources/Shared/stylesheets/menu.css" type="text/css" rel="stylesheet">
-    <script>
+     <script>
         function MainMenuRibbon_ActiveTabChanged(s, e) {
             try {
                 switch (e.tab.name) {
@@ -865,9 +864,7 @@ iframe {
 
 
 
-                    case "navShutdown":
-                        SetSplitterPane('EIF.Softic.Maintenance/ManagementShutdown.ascx');
-                        break;
+                    
                     case "navReleve":
                         SetSplitterPane('EIF.Softic.Maintenance/ManagementReLeveMachine.ascx');
                         break;

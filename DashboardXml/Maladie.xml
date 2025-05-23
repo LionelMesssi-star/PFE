@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Maladie" />
+  <DataSources>
+    <SqlDataSource Name="Afficher_Sante_ConseqMP" ComponentName="sqlDataSource1">
+      <Connection Name="ErpbilansocialConnectionString" FromAppConfig="true" />
+      <Query Type="StoredProcQuery" Name="Afficher_Sante_ConseqMP">
+        <ProcName>Afficher_Sante_ConseqMP</ProcName>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="" DataSource="sqlDataSource1" DataMember="Afficher_Sante_ConseqMP">
+      <DataItems>
+        <Measure DataMember="Nbr2023" DefaultId="DataItem3" />
+        <Measure DataMember="Nbr2024" DefaultId="DataItem4" />
+        <Measure DataMember="Nbr2025" DefaultId="DataItem5" />
+        <Dimension DataMember="Consequence" DefaultId="DataItem0" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem3" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem4" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem5" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

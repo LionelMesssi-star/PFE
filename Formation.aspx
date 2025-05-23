@@ -649,7 +649,7 @@
         </dx:LayoutItemNestedControlContainer>
     </LayoutItemNestedControlCollection>
 </dx:LayoutItem>
-
+ 
     </Items>
 </dx:LayoutGroup>
     </Items>

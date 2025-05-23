@@ -10,15 +10,15 @@
       <script type="text/javascript">
 
 
-      function endCallMotsPass(s,e) {
+          function endCallMotsPass(s, e) {
 
-          var errPoin = s.cp_Ress;
+              var errPoin = s.cp_Ress;
 
-          lblErr.SetText(errPoin);
-          PopupAlert.Show();
-           
+              lblErr.SetText(errPoin);
+              PopupAlert.Show();
 
-      }
+
+          }
 
       </script>
 </head>
@@ -91,12 +91,14 @@
 
         function callchange() {
             if (ASPxClientEdit.ValidateGroup('softic'))
-            CallbackChangePass.PerformCallback();
+                CallbackChangePass.PerformCallback();
         }
 
         function ValidationChangePassCallback(s, e) {
             var errPoin = s.cp_Inser;
 
+
+            alert(errPoin);
             if (errPoin == 'add') {
 
                 labelError.SetText('Password changed.');
@@ -220,24 +222,9 @@
 
                 </tr>
                 <tr>
-                    <td height="30px" colspan="2"></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">
-
-                        <dx:ASPxTextBox ID="txtSession" ClientInstanceName="txtSession" runat="server" NullText="User Name" Enabled="false"
-                            Height="40px" Width="400px">
-                            <ClientSideEvents Validation="ValidationForcedPassw" />
-                            <ValidationSettings Display="Dynamic" SetFocusOnError="True" ErrorTextPosition="Bottom" ValidationGroup="Care" EnableCustomValidation="true">
-                                <RequiredField IsRequired="true" />
-                            </ValidationSettings>
-                        </dx:ASPxTextBox>
-
-                    </td>
-                </tr>
-                <tr>
                     <td height="10px" colspan="2"></td>
                 </tr>
+            
                 <tr>
                     <td colspan="2" align="center">
 
@@ -376,7 +363,6 @@
     <dx:ASPxCallback ID="CallbackMin" runat="server" ClientInstanceName="CallbackMin" OnCallback="CallbackMin_Callback">
         <ClientSideEvents CallbackComplete="ValidationminLCallback" />
     </dx:ASPxCallback>
-
    <%-- <div>
       <table widht="100%">
                         <tr>

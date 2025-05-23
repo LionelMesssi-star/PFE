@@ -138,22 +138,45 @@
                             <dx:GridViewDataTextColumn FieldName="ID" Visible="false">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataDateColumn FieldName="Date" Caption="Date" Visible="true">
-                                <PropertiesDateEdit EditFormat="Date" UseMaskBehavior="true" DisplayFormatString="dd/MM/yyyy">
-                                    <ClientSideEvents GotFocus="ShowCalendar" />
-                                </PropertiesDateEdit>
+                                                          <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
+    <CalendarProperties FirstDayOfWeek="Monday">
+        <FastNavProperties DisplayMode="Inline" />
+    </CalendarProperties>
+</PropertiesDateEdit>
                             </dx:GridViewDataDateColumn>
-                            <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom" Width="100%">
+                            <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom"  >
                                 <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom" ValueField="ID" />
                             </dx:GridViewDataComboBoxColumn>
 
-                            <dx:GridViewDataTextColumn FieldName="Cause_Atteinte_Sante" Caption="Type Atteinte Sante" Width="100%" />
-                            <dx:GridViewDataTextColumn FieldName="Consequence" Caption="Consequence" Width="100%" />
+                            <dx:GridViewDataComboBoxColumn FieldName="Type_Atteinte_Sante" Caption="Type Atteinte Sante"  >
+                                <PropertiesComboBox>
+    <Items>
+        <dx:ListEditItem Text="Accidents du travail" Value="Accidents du travail" />
+        <dx:ListEditItem Text="Maladies Professionelles" Value="Maladies Professionelles" /> 
+    </Items>
+    <ValidationSettings RequiredField-IsRequired="true" />
+</PropertiesComboBox>
+
+                            </dx:GridViewDataComboBoxColumn>
+
+                            <dx:GridViewDataComboBoxColumn FieldName="Consequence" Caption="Consequence"  >
+                                                            <PropertiesComboBox>
+    <Items>
+        <dx:ListEditItem Text="Décès" Value="Décès" />
+        <dx:ListEditItem Text="Avec arret de travail" Value="Avec arret de travail" />
+        <dx:ListEditItem Text="Sans arret de travail" Value="Sans arret de travail" />
+ 
+    </Items>
+    <ValidationSettings RequiredField-IsRequired="true" />
+</PropertiesComboBox></dx:GridViewDataComboBoxColumn>
                             <dx:GridViewDataDateColumn FieldName="Date_Deces" Caption="Date Decés" Visible="true">
-                                <PropertiesDateEdit EditFormat="Date" UseMaskBehavior="true" DisplayFormatString="dd/MM/yyyy">
-                                    <ClientSideEvents GotFocus="ShowCalendar" />
-                                </PropertiesDateEdit>
+                                                          <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
+    <CalendarProperties FirstDayOfWeek="Monday">
+        <FastNavProperties DisplayMode="Inline" />
+    </CalendarProperties>
+</PropertiesDateEdit>
                             </dx:GridViewDataDateColumn>
-                            <dx:GridViewDataTextColumn FieldName="Nb_Jours_Arret_Travail" Caption="Nb Jours Arret Travail" Width="100%" />
+                            <dx:GridViewDataTextColumn FieldName="Nb_Jours_Arret_Travail" Caption="Nb Jours Arret Travail" />
 
 
 

@@ -4,18 +4,59 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.Ajax.Utilities;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 public partial class ChangMotsPass : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
 
+
+    }
+    protected void CallbackDateOLD_Callback(object source, DevExpress.Web.CallbackEventArgs e)
+    {
+
+        DataLayerExperienceDataContext Layer = new DataLayerExperienceDataContext();
+
+        var Passwrd = txtOldPassword.Text;
+        var login = Session["matricule"].ToString();
+
+        var req = (from p in Layer.Usersession
+                   where p.Login == login & p.Password == Passwrd
+                   select p).ToList();
+
+
+        if ((req.Count > 0))
+        {
+
+            e.Result = "Good";
+        }
+        else
+        {
+            e.Result = "false";
+
+        }
+
+
     }
 
     protected void CallbackChangePass_Callback(object source, DevExpress.Web.CallbackEventArgs e)
     {
         CallbackChangePass.JSProperties["cp_Inser"] = " ";
-        var userName = txtSession.Text;
+
+
+        DataLayerExperienceDataContext layer = new DataLayerExperienceDataContext();
+
+
+
+        var NowPasswrd = PasswordTextbox.Text;
+        var login = Session["matricule"].ToString();
+
+
+        EditPasswr(login, NowPasswrd);
+
+        CallbackChangePass.JSProperties["cp_Inser"] = "add";
 
         // Update the password.
 
@@ -58,12 +99,28 @@ public partial class ChangMotsPass : System.Web.UI.Page
         //}
     }
 
+    private int EditPasswr(string Login, string Passwrd)
+    {
+        try
+        {
+            DataLayerExperienceDataContext layer = new DataLayerExperienceDataContext();
+            var ac = layer.Usersession.Where(w => w.Login == Login).SingleOrDefault();
+            ac.Password = Passwrd;
 
+            layer.SubmitChanges();
+
+            return 0;
+        }
+        catch (Exception)
+        {
+            return -1;
+        }
+    }
     protected void CallbackDate_Callback(object source, DevExpress.Web.CallbackEventArgs e)
     {
         e.Result = " ";
 
-        var typ = txtSession.Text;
+        // var typ = txtSession.Text;
 
         //if (typ.Contains("@"))
         //{
@@ -91,18 +148,6 @@ public partial class ChangMotsPass : System.Web.UI.Page
     }
 
 
-    protected void CallbackDateOLD_Callback(object source, DevExpress.Web.CallbackEventArgs e)
-    {
-        //if (Membership.ValidateUser(txtSession.Text, txtOldPassword.Text) == true)
-        //{
-        //    e.Result = "Good";
-        //}
-        //else
-        //{
-        //    e.Result = "false";
-
-        //}
-    }
 
     protected void CallbackMin_Callback(object source, DevExpress.Web.CallbackEventArgs e)
     {
@@ -136,7 +181,7 @@ public partial class ChangMotsPass : System.Web.UI.Page
 
 
 
-    
+
         //var req = (from p in Layer.Get_ComparetPassword(sess, clearPWd)
         //           select p).ToList();
 
