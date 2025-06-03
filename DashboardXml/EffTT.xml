@@ -58,7 +58,6 @@
         <Dimension DataMember="Prenom" DefaultId="DataItem1" />
         <Measure DataMember="ID" DefaultId="DataItem2" />
         <Dimension DataMember="Sexe" DefaultId="DataItem3" />
-        <Dimension DataMember="Tranche_Age" DefaultId="DataItem4" />
         <Dimension DataMember="Departement" DefaultId="DataItem5" />
         <Dimension DataMember="Fonction" DefaultId="DataItem6" />
         <Dimension DataMember="Nationalite" DefaultId="DataItem7" />
@@ -76,9 +75,6 @@
         </GridDimensionColumn>
         <GridDimensionColumn>
           <Dimension DefaultId="DataItem3" />
-        </GridDimensionColumn>
-        <GridDimensionColumn>
-          <Dimension DefaultId="DataItem4" />
         </GridDimensionColumn>
         <GridDimensionColumn>
           <Dimension DefaultId="DataItem5" />

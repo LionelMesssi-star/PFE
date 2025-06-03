@@ -13,7 +13,7 @@
     <form id="form1" runat="server">
     <div>
      <div>
-       <dx:ASPxDashboard ID="EffTT" Width="100%"  Height="800px"  WorkingMode="Designer" runat="server" ></dx:ASPxDashboard>
+       <dx:ASPxDashboard ID="EffTT" Width="100%"  Height="800px"  WorkingMode="ViewerOnly" runat="server" ></dx:ASPxDashboard>
     </div>
     </div>
     </form>
