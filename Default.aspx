@@ -1,11 +1,8 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
-<%@ Register Assembly="OfficeWebUI, Version=2.4.4086.15482" Namespace="OfficeWebUI" TagPrefix="OfficeWebUI" %>
-<%@ Register Assembly="OfficeWebUI, Version=2.4.4086.15482" Namespace="OfficeWebUI.Ribbon" TagPrefix="OfficeWebUI" %>
-<%@ Register Assembly="OfficeWebUI" Namespace="OfficeWebUI.Ribbon" TagPrefix="cc1" %>
-
+ 
 <asp:Content ID="ContentPlaceHolder1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <style>
+    <%--<style>
         .w3-badge, .w3-tag {
             color: #fff;
             display: inline-block;
@@ -32,8 +29,9 @@
         .w3-right-align { text-align: right !important; }
         .w3-justify { text-align: justify !important; }
         .w3-center { text-align: center !important; }
-    </style>
+    </style>--%>
     <link href="Theme/Theme.css" rel="stylesheet" type="text/css" />
+   <link href="Content/css/FullscreenSample.css" rel="stylesheet" />
     <script>
         (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "WYEOhBGuWW4zpMMngLwgm"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
     </script>
@@ -360,36 +358,48 @@
             } catch (e) { }
         }
     </script>
-    <OfficeWebUI:Manager ID="rbManager" runat="server" UITheme="Office2010Silver" />
     <table width="100%">
         <tr>
-            <td align="center">
-                <div class="navbar navbar-inverse navbar-fixed-top">
-                    <div class="container">
-                        <div class="navbar-collapse collapse">
-                            <table style="width: 100%; font-size: 1px;">
-                                <tr>
-                                    <td></td>
-                                    <td align="right" width="180px">
-                                        <a href="javascript: ChangePasswrd();">
-                                            <div runat="server" id="lblNomSession" style="font-size: 12px; color: Black; text-transform: uppercase; font-weight: bold;"></div>
-                                        </a>
-                                    </td>
-                                    <td align="right" width="80px">
-                                        <dx:ASPxComboBox ID="LanguageComboBox" runat="server" AutoPostBack="True" meta:resourcekey="ASPxComboBoxResource1" Theme="Glass" Width="70px" ClientVisible="true">
-                                            <Items>
-                                                <dx:ListEditItem Text="Francais" Value="FR" meta:resourcekey="users_Francais" Selected="true" />
-                                                <dx:ListEditItem Text="English" Value="en" meta:resourcekey="users_English" />
-                                                <dx:ListEditItem Text="Arabic" Value="AR" meta:resourcekey="users_Arabic" />
-                                            </Items>
-                                        </dx:ASPxComboBox>
-                                    </td>
-                                </tr>
-                            </table>
+    <td align="center">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-collapse collapse">
+                    <div style="font-family:Gugi" >
+
+                    <table style="width: 100%; font-size: 30px ;  ">
+
+                        <tr>
+
+                            <td>
+                                <div class="logo">
+                                    <div class="text">Bilan Social </div>
+                                </div>
+
+                            </td>
+                            <td  >
+                                <a style="text-align: right; left: 50px; color:white;font-size:15px " href="javascript: ChangePasswrd();">
+                                    <div class="text"  runat="server" id="lblNomSession"  >
+                                    </div>
+                                </a>
+                            </td>
+                            <td align="right" width="2px">
+                                <dx:ASPxComboBox ID="LanguageComboBox" runat="server" AutoPostBack="True" Visible="false" meta:resourcekey="ASPxComboBoxResource1" Theme="Glass" Width="70px" ClientVisible="true">
+                                    <Items>
+                                        <dx:ListEditItem Text="Francais" Value="FR" meta:resourcekey="users_Francais" Selected="true" />
+                                        <dx:ListEditItem Text="English" Value="en" meta:resourcekey="users_English" />
+                                        <dx:ListEditItem Text="Arabic" Value="AR" meta:resourcekey="users_Arabic" />
+                                    </Items>
+                                </dx:ASPxComboBox>
+                            </td>
+                        </tr>
+                    </table>
                         </div>
-                    </div>
-                </td>
-        </tr>
+                </div>
+            </div>
+        </div>
+
+    </td>
+</tr>
         <tr>
             <td>
                 <table style="width: 100%; font-size: 1px;">
@@ -401,17 +411,17 @@
                                         <Groups>
                                         </Groups>
                                     </dx:RibbonTab>
-                                    <dx:RibbonTab Name="tabGestWorkflow" runat="server" Text="Gestion des workflows">
+                                    <dx:RibbonTab Name="tabGestWorkflow" runat="server" Text="Bilan">
                                         <Groups>
                                             <dx:RibbonGroup Name="RibbonSuiviAgent" runat="server" Text="Suivi">
                                                 <Items>
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonEffectif" Text="Effectif" runat="server" Visible="true" LargeImage-IconID="hybriddemoicons_tiles_hybriddemo_allemployees_svg_32x32"></dx:RibbonButtonItem>
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonParcoursproo" Text="Parcours Pro" runat="server" Visible="true" LargeImage-IconID="hybriddemoicons_bottompanel_hybriddemo_mapview_svg_32x32"></dx:RibbonButtonItem>
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonCompetences" Text="Compétence" runat="server" Visible="true" LargeImage-IconID="richedit_richeditbookmark_svg_dark_32x32"></dx:RibbonButtonItem>
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonFormation" Text="Formation" runat="server" Visible="true" LargeImage-IconID="businessobjects_bo_project_svg_dark_32x32"></dx:RibbonButtonItem>
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonRemuneration" Text="Rémunération" runat="server" Visible="true" LargeImage-IconID="iconbuilder_business_money_svg_dark_32x32"></dx:RibbonButtonItem>
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonSanteSecurites" Text="Santé sécurité" runat="server" Visible="true" LargeImage-IconID="businessobjects_bo_security_permission_svg_dark_32x32"></dx:RibbonButtonItem>
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonAbsentiesme" Text="Absentéisme" runat="server" Visible="true" LargeImage-IconID="actions_delete_32x32gray"></dx:RibbonButtonItem>
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonEffectif" Text="Effectif" runat="server" Visible="true" LargeImage-IconID="businessobjects_bodepartment_32x32"></dx:RibbonButtonItem>
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonParcoursproo" Text="Parcours Pro" runat="server" Visible="true" LargeImage-IconID="programming_project_32x32"></dx:RibbonButtonItem>
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonCompetences" Text="Compétence" runat="server" Visible="true" LargeImage-IconID="chart_charttype_bubble_svg_32x32"></dx:RibbonButtonItem>
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonFormation" Text="Formation" runat="server" Visible="true" LargeImage-IconID="content_notes_32x32"></dx:RibbonButtonItem>
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonRemuneration" Text="Rémunération" runat="server" Visible="true" LargeImage-IconID="dashboards_editconnection_svg_32x32"></dx:RibbonButtonItem>
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonSanteSecurites" Text="Santé sécurité" runat="server" Visible="true" LargeImage-IconID="dashboards_gaugestylelinearhorizontal_svg_32x32"></dx:RibbonButtonItem>
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonAbsentiesme" Text="Absentéisme" runat="server" Visible="true" LargeImage-IconID="dashboards_autoarrange_svg_32x32"></dx:RibbonButtonItem>
                                                 </Items>
                                             </dx:RibbonGroup>
                                         </Groups>
@@ -420,22 +430,22 @@
                                         <Groups>
                                             <dx:RibbonGroup Name="RibbonSuivi" runat="server" Text="Suivi">
                                                 <Items>
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonEmployes" runat="server" Text="Employes" LargeImage-IconID="iconbuilder_actions_user_svg_dark_32x32" />
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonEmployes" runat="server" Text="Employes" LargeImage-IconID="businessobjects_boemployee_32x32" />
                                                     <dx:RibbonButtonItem Size="Large" Name="RibbonSalaire" runat="server" Text="Salaire" LargeImage-IconID="iconbuilder_business_money_svg_32x32" />
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonAbsentiesmes" runat="server" Text="Absenteisme" LargeImage-IconID="actions_delete_32x32gray" />
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonFormationmation" runat="server" Text="Formation" LargeImage-IconID="businessobjects_bo_note_svg_dark_32x32" />
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonParcourspro" runat="server" Text="Parcours Pro" LargeImage-IconID="iconbuilder_travel_walk_svg_dark_32x32" />
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonCompetence" runat="server" Text="Compétence" LargeImage-IconID="richedit_richeditbookmark_svg_dark_32x32" />
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonSanteSecurite" runat="server" Text="Santé sécurité" LargeImage-IconID="businessobjects_bo_security_permission_svg_dark_32x32" />
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonDepenseFormation" runat="server" Text="Depense Formation" LargeImage-IconID="actions_stretch_32x32gray" />
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonAbsentiesmes" runat="server" Text="Absenteisme" LargeImage-IconID="dashboards_autoarrange_svg_32x32" />
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonFormationmation" runat="server" Text="Formation" LargeImage-IconID="content_notes_32x32" />
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonParcourspro" runat="server" Text="Parcours Pro" LargeImage-IconID="programming_project_32x32" />
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonCompetence" runat="server" Text="Compétence" LargeImage-IconID="chart_charttype_bubble_svg_32x32" />
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonSanteSecurite" runat="server" Text="Santé sécurité" LargeImage-IconID="dashboards_gaugestylelinearhorizontal_svg_32x32" />
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonDepenseFormation" runat="server" Text="Depense Formation" LargeImage-IconID="dashboards_newdatasource_svg_32x32" />
                                                 </Items>
                                             </dx:RibbonGroup>
                                             <dx:RibbonGroup Name="RibbonControle" runat="server" Text="">
                                                 <Items>
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonControle" runat="server" Text="Controle" LargeImage-IconID="xaf_modeleditor_controllers_svg_dark_32x32" />
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonRessource" runat="server" Text="Ressource" LargeImage-IconID="actions_up_svg_dark_32x32" />
-                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonPermission" runat="server" Text="Permission" LargeImage-IconID="actions_show_32x32gray" />
-                                                    <dx:RibbonButtonItem Size="Small" Name="RibbonRole" runat="server" Text="Role" SmallImage-IconID="businessobjects_bo_role_svg_dark_16x16" />
+<%--                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonControle" runat="server" Text="Controle" LargeImage-IconID="xaf_bo_security_permission_type_32x32" Visible="false" />--%>
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonRessource" runat="server" Text="Ressource" LargeImage-IconID="richedit_editrangepermission_32x32" />
+                                                    <dx:RibbonButtonItem Size="Large" Name="RibbonPermission" runat="server" Text="Permission" LargeImage-IconID="xaf_bo_security_permission_32x32" />
+                                                    <dx:RibbonButtonItem Size="Small" Name="RibbonRole" runat="server" Text="Role" SmallImage-IconID="people_role_32x32" />
                                                 </Items>
                                             </dx:RibbonGroup>
                                         </Groups>

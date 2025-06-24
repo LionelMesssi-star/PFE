@@ -62,7 +62,7 @@ public partial class _Default : Page
                 MainMenuRibbon.Tabs[2].Groups[1].Items[0].Visible = (bool)req[0].RibbonControle;
                 MainMenuRibbon.Tabs[2].Groups[1].Items[1].Visible = (bool)req[0].RibbonRessource;
                 MainMenuRibbon.Tabs[2].Groups[1].Items[2].Visible = (bool)req[0].RibbonPermission;
-                MainMenuRibbon.Tabs[2].Groups[1].Items[3].Visible = (bool)req[0].RibbonRole;
+                //MainMenuRibbon.Tabs[2].Groups[1].Items[3].Visible = (bool)req[0].RibbonRole;
 
                 // Paramétrages
                 MainMenuRibbon.Tabs[3].Visible = (bool)req[0].RibbonParametrage;

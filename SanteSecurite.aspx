@@ -137,29 +137,29 @@
                             </dx:GridViewCommandColumn>
                             <dx:GridViewDataTextColumn FieldName="ID" Visible="false">
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataDateColumn FieldName="Date" Caption="Date" Visible="true">
+                            <dx:GridViewDataDateColumn FieldName="Date" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" Caption="Date" Visible="true">
                                                           <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
     <CalendarProperties FirstDayOfWeek="Monday">
         <FastNavProperties DisplayMode="Inline" />
     </CalendarProperties>
 </PropertiesDateEdit>
                             </dx:GridViewDataDateColumn>
-                            <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom"  >
+                            <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" >
                                 <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom" ValueField="ID" />
                             </dx:GridViewDataComboBoxColumn>
 
-                            <dx:GridViewDataComboBoxColumn FieldName="Type_Atteinte_Sante" Caption="Type Atteinte Sante"  >
+                            <dx:GridViewDataComboBoxColumn FieldName="Type_Atteinte_Sante" Caption="Type Atteinte Sante" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" >
                                 <PropertiesComboBox>
     <Items>
-        <dx:ListEditItem Text="Accidents du travail" Value="Accidents du travail" />
-        <dx:ListEditItem Text="Maladies Professionelles" Value="Maladies Professionelles" /> 
+        <dx:ListEditItem Text="Accidents du travail" Value="Accidents du travail"  />
+        <dx:ListEditItem Text="Maladies Professionelles"   Value="Maladies Professionelles"  /> 
     </Items>
     <ValidationSettings RequiredField-IsRequired="true" />
 </PropertiesComboBox>
 
                             </dx:GridViewDataComboBoxColumn>
 
-                            <dx:GridViewDataComboBoxColumn FieldName="Consequence" Caption="Consequence"  >
+                            <dx:GridViewDataComboBoxColumn FieldName="Consequence"  HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" Caption="Consequence" >
                                                             <PropertiesComboBox>
     <Items>
         <dx:ListEditItem Text="Décès" Value="Décès" />
@@ -169,14 +169,14 @@
     </Items>
     <ValidationSettings RequiredField-IsRequired="true" />
 </PropertiesComboBox></dx:GridViewDataComboBoxColumn>
-                            <dx:GridViewDataDateColumn FieldName="Date_Deces" Caption="Date Decés" Visible="true">
+                            <dx:GridViewDataDateColumn FieldName="Date_Deces" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" Caption="Date Decés" Visible="true" >
                                                           <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
     <CalendarProperties FirstDayOfWeek="Monday">
         <FastNavProperties DisplayMode="Inline" />
     </CalendarProperties>
 </PropertiesDateEdit>
                             </dx:GridViewDataDateColumn>
-                            <dx:GridViewDataTextColumn FieldName="Nb_Jours_Arret_Travail" Caption="Nb Jours Arret Travail" />
+                            <dx:GridViewDataTextColumn FieldName="Nb_Jours_Arret_Travail" Caption="Nb Jours Arret Travail" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" />
 
 
 

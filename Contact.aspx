@@ -1,21 +1,23 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Contact.aspx.cs" Inherits="Contact" %>
+
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   
-   
+
+
     <link href="Theme/Register.css" rel="stylesheet" />
 
     <style>
-       .dnnPrimaryAction {
-    border-width: 1px;
-    border-style: solid;
-    border-color: #187cc2;
-    border-radius: 6px;
-    background-color: #187cc2;
-    color: #ffffff !important;
-}
+        .dnnPrimaryAction {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #187cc2;
+            border-radius: 6px;
+            background-color: #187cc2;
+            color: #ffffff !important;
+        }
+
         .TdRegister {
             width: 2%;
         }
@@ -82,7 +84,7 @@
 
         function callchange() {
             if (ASPxClientEdit.ValidateGroup('softic'))
-            CallbackChangePass.PerformCallback();
+                CallbackChangePass.PerformCallback();
         }
 
         function ValidationChangePassCallback(s, e) {
@@ -175,6 +177,68 @@
         }
 
 
+        function ValidationOublier() {
+            PopupOublieretape.Show();
+        }
+
+
+        function fermerPopupOublierdeuxiemeetape() {
+            PopupOublierDeuxiemeEtape.Hide();
+        }
+
+        function fermerPopupOublieretape1() {
+            PopupOublieretape.Hide();
+        }
+
+        function FermerPopupNewPwd() {
+            PopupNewPwd.Hide();
+        }
+
+
+        function CallabGenerCode() {
+            CallbackContact.PerformCallback("GenerateCode");
+            PopupOublierDeuxiemeEtape.Show();
+
+        }
+
+        function ValidationCode() {
+            CallbackContact.PerformCallback("ValidateCode");
+            // Do NOT show PopupNewPwd here — wait for server response
+        }
+        function EndCallContact(s, e) {
+            var result = s.cp_Insert;
+
+            switch (result) {
+                case "LoginEmpty":
+                    alert("Veuillez entrer votre login.");
+                    break;
+
+                case "AlreadySentRecently":
+                    alert("Un code vient d'être envoyé, veuillez patienter une minute.");
+                    break;
+
+                case "Insert":
+                    PopupOublieretape.Hide();
+                    PopupOublierDeuxiemeEtape.Show();
+                    break;
+
+                case "NewPwdDONE":
+                    var newPwd = s.cp_NewPwdValue;
+                    txtNEWPWDD.SetText(newPwd);
+                    PopupOublierDeuxiemeEtape.Hide();
+                    PopupNewPwd.Show();
+                    break;
+
+                case "CodeInvalid":
+                    alert("Code de validation invalide, veuillez réessayer.");
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+
 
 
 
@@ -182,15 +246,22 @@
     </script>
 
     <div style="width: 100%; margin-top: 50px;">
-        
+
+
+
+
+
+
+
+
         <div class="card card-container">
-           <table>
-               <tr>
+            <table>
+                <tr>
                     <td height="80px" colspan="2"></td>
                 </tr>
-           </table>
-             <table width="100%" align="center" style="flex-grow: 1; flex-shrink: 1; border:groove;  height: 1px;">
- <tr>
+            </table>
+            <table width="100%" align="center" style="flex-grow: 1; flex-shrink: 1; border: groove; height: 1px;">
+                <tr>
                     <td height="30px" colspan="2"></td>
                 </tr>
                 <tr>
@@ -203,7 +274,7 @@
                 </tr>
                 <tr>
                     <td align="center" colspan="2">
-                        <div style="font-size: 20px;font-family: Exo;color:#292929;">
+                        <div style="font-size: 20px; font-family: Exo; color: #292929;">
                             Identification
                         </div>
                     </td>
@@ -212,7 +283,6 @@
                 <tr>
                     <td align="center" colspan="2">
                         <div style="color: rgba(var(--f52,153,153,153),1); font-size: 14px; line-height: 18px; margin: -3px 0 -4px;">
-
                         </div>
                     </td>
 
@@ -223,61 +293,75 @@
                 <tr>
                     <td colspan="2" align="center">
 
-                        <dx:ASPxTextBox ID="Textlogin" ClientInstanceName="Textlogin" runat="server" NullText="Nom d'utilisateur" 
-                            Height="40px" Width="400px">
-                           
+                        <dx:ASPxTextBox ID="Textlogin" ClientInstanceName="Textlogin" runat="server" NullText="Matricule"
+                            Height="45px" Width="400px" Font-Bold="false" Theme="iOS">
+                            <ValidationSettings ErrorTextPosition="Bottom" ErrorDisplayMode="Text" Display="Static" SetFocusOnError="true" ValidationGroup="softic">
+                                <RequiredField IsRequired="True" ErrorText="*Veuillez entrer votre matricule" />
+                            </ValidationSettings>
                         </dx:ASPxTextBox>
 
                     </td>
                 </tr>
 
                 <tr>
-                    <td height="20px" colspan="2"></td>
+                    <td height="5px" colspan="2"></td>
                 </tr>
-                
 
-               
-               
+
+
+
                 <tr>
                     <td colspan="2" align="center">
                         <dx:ASPxTextBox ID="Textmdp" ClientInstanceName="Textmdp" Password="true" runat="server" NullText="Mot de passe"
-                            Height="40px" Width="400px" >
-                         
+                            Height="45px" Width="400px" Font-Bold="false" Theme="iOS">
+                            <ValidationSettings ErrorTextPosition="Bottom" ErrorDisplayMode="Text" Display="Static" SetFocusOnError="true" ValidationGroup="softic">
+                                <RequiredField IsRequired="True" ErrorText="*Veuillez entrer votre mot de passe" />
+                            </ValidationSettings>
+
                         </dx:ASPxTextBox>
-                       
-                       
+
+
                     </td>
 
                 </tr>
-                
+
 
                 <tr>
                     <td height="20px" colspan="2"></td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="2"     border-radius="6px" >
-                        <dx:ASPxButton ID="btnOK" ClientInstanceName="btnOK" Text="Connexion"   Font-Bold="True"     BackColor="#187cc2" runat="server"  Theme="Metropolis" OnClick="btnValidation_Click"
-                            AutoPostBack="false" Width="400px"  Height="50px" ValidationGroup="softic" Font-Overline="False" Font-Size="Large" >
-                            
+                    <td align="center" colspan="2" border-radius="6px">
+                        <dx:ASPxButton ID="btnOK" ClientInstanceName="btnOK" Text="Connexion" Font-Bold="True" ForeColor="black" BackColor="#187cc2" runat="server" Theme="material" OnClick="btnValidation_Click"
+                            AutoPostBack="false" Width="400px" Height="50px" ValidationGroup="softic" Font-Overline="False" Font-Size="Large">
                         </dx:ASPxButton>
 
 
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td align="center" colspan="2" border-radius="6px">
+
+                        <dx:ASPxLabel ID="lblError" ClientInstanceName="lblError" runat="server" Font-Bold="True" ForeColor="red">
+                        </dx:ASPxLabel>
 
                     </td>
                 </tr>
 
                 <tr>
-                    <td height="100px" colspan="2"></td>
+                    <td height="50px" colspan="2"></td>
                 </tr>
-
                 <tr>
-                    <td align="center" colspan="2">
-
-                        
-
+                    <td align="center" colspan="2" border-radius="6px">
+                        <a href="javascript:void(0);" onclick="ValidationOublier()">Mot de passe oublié ? </a>
 
 
                     </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2"></td>
 
                 </tr>
                 <tr>
@@ -289,17 +373,101 @@
 
                     </td>
                 </tr>
+
             </table>
         </div>
     </div>
 
-    
+    <dx:ASPxPopupControl ID="PopupOublieretape" ClientInstanceName="PopupOublieretape" ShowCloseButton="true" ShowHeader="true"
+        HeaderText="Mot de passe oublié" Width="450px" PopupVerticalAlign="WindowCenter" PopupHorizontalAlign="WindowCenter" runat="server" Theme="Metropolis">
+        <ContentCollection>
+            <dx:PopupControlContentControl>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                    <dx:ASPxLabel ID="lblInfo" runat="server" Text="Veuillez entrer votre login:" Theme="Metropolis" Font-Size="Large" CssClass="header-label"></dx:ASPxLabel>
 
-  
-                         
-                                
-            
-      
+                    <dx:ASPxTextBox ID="txtLogin" ClientInstanceName="txtLogin" runat="server" Caption="Matricule" Theme="Metropolis" Height="20px" Width="100%">
+                        <ValidationSettings RequiredField-IsRequired="true" Display="Dynamic" ErrorText="Entrez votre mot de passe!" ValidationGroup="eppm" ErrorDisplayMode="Text" />
+                    </dx:ASPxTextBox>
+
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+
+                        <dx:ASPxButton ID="btnFermer" runat="server" Width="120px" ClientInstanceName="btnFermer" Text="Fermer" Theme="Metropolis">
+                            <ClientSideEvents Click="fermerPopupOublieretape1" />
+                        </dx:ASPxButton>
+                        <dx:ASPxButton ID="btnNext" ClientInstanceName="btnNext" runat="server" Text="Suivant" Theme="Metropolis" Width="120px" Height="40px" AutoPostBack="false">
+                            <ClientSideEvents Click="CallabGenerCode" />
+                            <Image IconID="outlookinspired_icon_pagenext_svg_16x16"></Image>
+
+                        </dx:ASPxButton>
+                    </div>
+                </div>
+            </dx:PopupControlContentControl>
+        </ContentCollection>
+    </dx:ASPxPopupControl>
+    <dx:ASPxPopupControl ID="PopupNewPwd" ClientInstanceName="PopupNewPwd" ShowCloseButton="true" ShowHeader="false"
+        HeaderText="Demander un code de validation" Width="450px" PopupVerticalAlign="WindowCenter" PopupHorizontalAlign="WindowCenter" runat="server" Theme="Metropolis">
+        <ContentCollection>
+            <dx:PopupControlContentControl>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                    <dx:ASPxLabel ID="lblInfooo" runat="server" Text="Un nouveau mot de passe a été envoyé à votre email" Theme="Metropolis" Font-Size="Large" CssClass="header-label"></dx:ASPxLabel>
+
+                    <dx:ASPxLabel ID="txtLoginnn" ClientInstanceName="txtLoginnn" runat="server"  Theme="Metropolis" Width="100%">
+                    </dx:ASPxLabel>
+
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+
+                        <dx:ASPxButton ID="ASPxButton1" ClientInstanceName="btnOK" runat="server" Text="OK" Width="120px" Height="40px" Theme="MetropolisBlue" AutoPostBack="false" >
+                            <ClientSideEvents Click="FermerPopupNewPwd" />
+                            <Image IconID="outlookinspired_markcomplete_svg_16x16"></Image>
+
+                        </dx:ASPxButton>
+                    </div>
+                </div>
+            </dx:PopupControlContentControl>
+        </ContentCollection>
+    </dx:ASPxPopupControl>
+    <dx:ASPxPopupControl ID="PopupOublierDeuxiemeEtape" ClientInstanceName="PopupOublierDeuxiemeEtape" ShowCloseButton="true" ShowHeader="false"
+        HeaderText="Demander un code de validation" Width="450px" PopupVerticalAlign="WindowCenter" PopupHorizontalAlign="WindowCenter" runat="server" Theme="Metropolis">
+        <ContentCollection>
+            <dx:PopupControlContentControl>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                    <dx:ASPxLabel ID="lblInfoo" runat="server" Text="Veuillez entrer le code envoyé sur votre email:" Theme="Metropolis" Font-Size="Large" CssClass="header-label"></dx:ASPxLabel>
+
+                    <dx:ASPxTextBox ID="txtCodeValidation" ClientInstanceName="txtCodeValidation" runat="server" Caption="Code envoyé" Theme="Metropolis" Width="100%">
+                        <ValidationSettings RequiredField-IsRequired="true"  />
+                    </dx:ASPxTextBox>
+
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+
+                        <dx:ASPxButton ID="btnFermerr" runat="server" Width="120px" ClientInstanceName="btnFermer" Text="Fermer" Theme="Metropolis">
+                            <ClientSideEvents Click="fermerPopupOublierdeuxiemeetape" />
+                        </dx:ASPxButton>
+                        <dx:ASPxButton ID="btnNextt" ClientInstanceName="btnNext" runat="server" Text="Suivant" Theme="Metropolis" Width="120px" Height="40px" AutoPostBack="false">
+                            <ClientSideEvents Click="ValidationCode" />
+                            <Image IconID="outlookinspired_icon_pagenext_svg_16x16"></Image>
+
+                        </dx:ASPxButton>
+                    </div>
+                </div>
+            </dx:PopupControlContentControl>
+        </ContentCollection>
+    </dx:ASPxPopupControl>
+
+
+    <dx:ASPxCallbackPanel ID="CallbackContact" runat="server" OnCallback="CallbackContact_Callback" ClientInstanceName="CallbackContact" Width="100%">
+        <ClientSideEvents EndCallback="EndCallContact" />
+        <PanelCollection>
+            <dx:PanelContent ID="PanelContent3" runat="server">
+                <dx:ASPxTextBox ID="txtCode" ClientInstanceName="txtCode" runat="server" Width="100%" Visible="false" ></dx:ASPxTextBox>
+                <dx:ASPxTextBox ID="txtNEWPWDD" ClientInstanceName="txtNEWPWDD" runat="server" Width="100%" Visible="false" ></dx:ASPxTextBox>
+
+            </dx:PanelContent>
+        </PanelCollection>
+    </dx:ASPxCallbackPanel>
+
+
+
 
 
 </asp:Content>
+

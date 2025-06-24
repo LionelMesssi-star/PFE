@@ -38,7 +38,6 @@ base(global::System.Configuration.ConfigurationManager.ConnectionStrings["Erpbil
     {
         OnCreated();
     }
-
     public DataLayerExperienceDataContext(string connection) : 
 			base(connection, mappingSource)
 	{
@@ -216,6 +215,13 @@ base(global::System.Configuration.ConfigurationManager.ConnectionStrings["Erpbil
 	{
 		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		return ((ISingleResult<Afficher_Abs_MoyenResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateUserPassword")]
+	public int UpdateUserPassword([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string login, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(255)")] string newPassword)
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), login, newPassword);
+		return ((int)(result.ReturnValue));
 	}
 }
 

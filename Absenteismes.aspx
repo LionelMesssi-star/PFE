@@ -130,18 +130,18 @@
                         </dx:GridViewCommandColumn>
                         <dx:GridViewDataTextColumn FieldName="ID" Visible="false">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom_Prenom" Width="100%">
+                        <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom_Prenom" Width="100%" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                             <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom" ValueField="ID" />
                         </dx:GridViewDataComboBoxColumn>
-<dx:GridViewDataDateColumn FieldName="Debut_Absence" Width="100%" Caption="Date Début Absence">
+<dx:GridViewDataDateColumn FieldName="Debut_Absence" Width="100%" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" Caption="Date Début Absence">
     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
         <CalendarProperties FirstDayOfWeek="Monday">
             <FastNavProperties DisplayMode="Inline" />
         </CalendarProperties>
     </PropertiesDateEdit>
 </dx:GridViewDataDateColumn>
-                        <dx:GridViewDataTextColumn FieldName="Nb_Jours" Width="100%" />
-                        <dx:GridViewDataTextColumn FieldName="Motif" Width="100%" />
+                        <dx:GridViewDataTextColumn FieldName="Nb_Jours" Width="100%" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" />
+                        <dx:GridViewDataTextColumn FieldName="Motif" Width="100%" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" />
 
                     </Columns>
 

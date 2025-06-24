@@ -142,7 +142,7 @@
             </dx:ASPxPopupMenu>
 
 
-            <dx:ASPxGridView ID="GridCl" ClientInstanceName="GridCl" Theme="iOS" OnCustomCallback="GridCl_CustomCallback"
+            <dx:ASPxGridView ID="GridCl" ClientInstanceName="GridCl" Theme="office365" OnCustomCallback="GridCl_CustomCallback"
                 runat="server" AutoGenerateColumns="False" DataSourceID="SqlRessources"
                 KeyFieldName="ID" Width="100%">
                 <ClientSideEvents ContextMenu="grdInterventionContextMenu" EndCallback="EndCallback_Password" />

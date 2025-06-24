@@ -100,70 +100,70 @@
                            <CellStyle HorizontalAlign="Center" />
                        </dx:GridViewCommandColumn>
 
-                       <dx:GridViewDataTextColumn FieldName="ID" Visible="false" />
+                       <dx:GridViewDataTextColumn FieldName="ID" Visible="false" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede"/>
 
-                       <dx:GridViewDataTextColumn FieldName="Nom" Caption="Nom" Width="120px">
+                       <dx:GridViewDataTextColumn FieldName="Nom" Caption="Nom" Width="120px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesTextEdit>
                                <ValidationSettings RequiredField-IsRequired="true" />
                            </PropertiesTextEdit>
                            <CellStyle Font-Bold="true" />
                        </dx:GridViewDataTextColumn>
 
-                       <dx:GridViewDataTextColumn FieldName="Prenom" Caption="Prénom" Width="120px">
+                       <dx:GridViewDataTextColumn FieldName="Prenom" Caption="Prénom" Width="120px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesTextEdit>
                                <ValidationSettings RequiredField-IsRequired="true" />
                            </PropertiesTextEdit>
                        </dx:GridViewDataTextColumn>
 
-                        <dx:GridViewDataDateColumn FieldName="Date_Naissance" Caption="Date de Naissance" Width="120px">
+                        <dx:GridViewDataDateColumn FieldName="Date_Naissance" Caption="Date de Naissance" Width="120px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
         <ValidationSettings RequiredField-IsRequired="true" />
     </PropertiesDateEdit>
 </dx:GridViewDataDateColumn>
 
-                       <dx:GridViewDataComboBoxColumn FieldName="ID_Sexe" Caption="Sexe" Width="80px">
+                       <dx:GridViewDataComboBoxColumn FieldName="ID_Sexe" Caption="Sexe" Width="80px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesComboBox DataSourceID="SqlGender" TextField="Description" ValueField="ID">
                                <ValidationSettings RequiredField-IsRequired="true" />
                            </PropertiesComboBox>
                        </dx:GridViewDataComboBoxColumn>
 
-                       <dx:GridViewDataComboBoxColumn FieldName="ID_Fonction" Caption="Fonction" Width="150px">
+                       <dx:GridViewDataComboBoxColumn FieldName="ID_Fonction" Caption="Fonction" Width="100px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesComboBox DataSourceID="SqlFonction" TextField="Description" ValueField="ID">
                                <ValidationSettings RequiredField-IsRequired="true" />
                            </PropertiesComboBox>
                        </dx:GridViewDataComboBoxColumn>
 
-                       <dx:GridViewDataComboBoxColumn FieldName="Departement_ID" Caption="Département" Width="150px">
+                       <dx:GridViewDataComboBoxColumn FieldName="Departement_ID" Caption="Département" Width="100px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesComboBox DataSourceID="SqlDep" TextField="Description" ValueField="ID">
                                <ValidationSettings RequiredField-IsRequired="true" />
                            </PropertiesComboBox>
                        </dx:GridViewDataComboBoxColumn>
 
-                       <dx:GridViewDataTextColumn FieldName="Email" Width="180px">
+                       <dx:GridViewDataTextColumn FieldName="Email" Width="180px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesTextEdit>
                                <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
                            </PropertiesTextEdit>
                        </dx:GridViewDataTextColumn>
 
-                       <dx:GridViewDataDateColumn FieldName="Date_Embauche" Caption="Date Embauche" Width="120px">
+                       <dx:GridViewDataDateColumn FieldName="Date_Embauche" Caption="Date Embauche" Width="100px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
                                <ValidationSettings RequiredField-IsRequired="true" />
                            </PropertiesDateEdit>
                        </dx:GridViewDataDateColumn>
 
-                       <dx:GridViewDataDateColumn FieldName="Date_Depart" Caption="Date Départ" Width="120px">
+                       <dx:GridViewDataDateColumn FieldName="Date_Depart" Caption="Date Départ" Width="100px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy" />
                        </dx:GridViewDataDateColumn>
 
-                       <dx:GridViewDataComboBoxColumn FieldName="ID_TypeC" Caption="Type Contrat" Width="120px">
+                       <dx:GridViewDataComboBoxColumn FieldName="ID_TypeC" Caption="Type Contrat" Width="120px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesComboBox DataSourceID="SqlTC" TextField="Description" ValueField="ID">
                                <ValidationSettings RequiredField-IsRequired="true" />
                            </PropertiesComboBox>
                        </dx:GridViewDataComboBoxColumn>
 
-                       <dx:GridViewDataTextColumn FieldName="Nationalite" Caption="Nationalité" Width="120px" />
+                       <dx:GridViewDataTextColumn FieldName="Nationalite" Caption="Nationalité" Width="120px" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede"/>
 
-                       <dx:GridViewDataComboBoxColumn FieldName="Status_Handicape" Caption="Handicap" Width="80px">
+                       <dx:GridViewDataComboBoxColumn FieldName="Status_Handicape" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" Caption="Handicap" Width="80px" >
                            <PropertiesComboBox>
                                <Items>
                                    <dx:ListEditItem Text="Oui" Value="Oui" />

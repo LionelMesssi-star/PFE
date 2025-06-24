@@ -1,0 +1,47 @@
+﻿.OptionsTable
+{
+    margin-bottom: 5px;
+}
+/* ASPxImagreSlider styles */
+.dxisControl .dxis-nbItem
+{
+    width: 130px;
+    height: 150px;
+    background-color: transparent;
+}
+.dxisControl .dxis-nbSelectedItem,
+.dxisControl .dxis-nbSelectedItem > div,
+.dxisControl .dxis-nbItem .dxis-nbHoverItem
+{
+    display: none !important; /* Hide Selection Frame */
+}
+/* Template styles */
+.url
+{
+    display: block;
+    color: #0068bb;
+    line-height: 1.2;
+    border: 1px solid #ffffff;
+    padding: 20px 25px 25px 25px;
+	text-align: center;
+	-moz-box-sizing: border-box;  
+    box-sizing: border-box;
+	width: 129px;
+	height: 150px;
+}
+.url:visited
+{
+	color: #660066;
+}
+.url:hover
+{
+	color: #dd0000;
+	border: 1px solid #dddddd;
+	background-color: #f8f8f8;
+}
+.name {
+    font-size: 13px;
+    white-space: normal;
+    font-family: Gugi, helvetica, arial, sans-serif;
+    font-family: 'Segoe UI', Helvetica, Tahoma, Geneva, sans-serif;
+}

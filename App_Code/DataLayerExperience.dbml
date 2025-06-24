@@ -168,4 +168,9 @@
       <Column Name="Moyenne_Jours_Absence" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.UpdateUserPassword" Method="UpdateUserPassword">
+    <Parameter Name="login" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="newPassword" Type="System.String" DbType="NVarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

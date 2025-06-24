@@ -1,0 +1,92 @@
+﻿.demo-fab-mainContainer {
+	width: 100%;
+	height: 556px;
+	border: 1px solid #C8C8C8;
+	background-color: #E4E4E4;
+	overflow: hidden;
+}
+.demo-fab-container {
+	background-color: white;
+	margin: 24px;
+}
+.demo-fab-header {
+	padding: 18px;
+	height: 74px;
+	box-shadow: 0px 2px 8px 0 rgba(0,0,0,0.16);
+}
+.dx-fab-active-button {
+    transform: scale(1);
+    visibility: visible;
+    margin: 0px 8px;
+    opacity: 1;
+}
+.demo-fab-header:hover {
+    cursor: pointer;
+}
+.demo-fab-buttonsContainer {
+	height: 24px;
+}
+.demo-fab-button {
+	background-color: #C0C0C0;	
+	height: 20px;
+	width: 20px;
+	border-radius: 100%;
+	float: right;
+	margin: 2px;
+}
+.demo-fab-button:first-child {
+	float: left;
+}
+.demo-fab-title {
+	background-color: #C4C4C4;
+	height: 31px;
+	width: 125px;
+	border-radius: 20px;
+	margin-left: 60px;
+	margin-top: 14px;
+}
+#demoFabContent {
+	padding-top: 50px;
+	height: 405px;
+}
+.demo-fab-item {
+	margin: 16px;
+	padding: 16px;
+	border-radius: 6px;
+	box-shadow: 0px 2px 8px 0 rgba(0,0,0,0.16);
+	height: 71px;
+	display: flex;
+}
+.demo-fab-item:hover {
+	box-shadow: 0px 2px 16px 0 rgba(0,0,0,0.16);
+	cursor: pointer;
+}
+.demo-fab-container .demo-fab-item-selected {
+	box-shadow: 0px 2px 16px 0 rgba(0,0,0,0.3);
+}
+.demo-fab-image {
+	width: 71px;
+	height: 71px;
+	background-color: #E6E6E6;
+	margin-right: 35px;
+	flex: none;
+}
+.demo-fab-caption {
+	background-color: #C0C0C0;
+	border-radius: 10px;
+	margin-top: 12px;
+	margin-bottom: 11px;
+	width: 122px; 
+	height: 18px;
+	
+}
+.demo-fab-text {
+	background-color: #DFDFDF;
+	border-radius: 10px;
+	margin-bottom: 4px;
+	height: 13px;
+}
+.demo-fab-border-radius {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}

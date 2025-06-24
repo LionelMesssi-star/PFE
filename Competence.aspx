@@ -134,11 +134,11 @@
                             </dx:GridViewCommandColumn>
                             <dx:GridViewDataTextColumn FieldName="ID" Visible="false">
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom" Width="100%">
+                            <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom" Width="100%" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" >
                                 <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom" ValueField="ID" />
                             </dx:GridViewDataComboBoxColumn>
-                            <dx:GridViewDataTextColumn FieldName="Competence" Width="100%" />
-                            <dx:GridViewDataComboBoxColumn FieldName="Niveau_Actuel" Caption="Niveau Actuel" Width="100%">
+                            <dx:GridViewDataTextColumn FieldName="Competence" Width="100%" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" />
+                            <dx:GridViewDataComboBoxColumn FieldName="Niveau_Actuel" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" Caption="Niveau Actuel" Width="100%">
                                 <PropertiesComboBox>
                                     <Items>
                                         <dx:ListEditItem Text="Débutant" Value="Débutant" />
@@ -153,7 +153,7 @@
                                 </PropertiesComboBox>
                             </dx:GridViewDataComboBoxColumn>
 
-                            <dx:GridViewDataComboBoxColumn FieldName="Niveau_Cible" Caption="Niveau cible" Width="100%">
+                            <dx:GridViewDataComboBoxColumn FieldName="Niveau_Cible" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" Caption="Niveau cible" Width="100%">
                                 <PropertiesComboBox>
                                     <Items>
                                         <dx:ListEditItem Text="Débutant" Value="Débutant" />
@@ -165,7 +165,7 @@
                                     <ValidationSettings RequiredField-IsRequired="true" />
                                 </PropertiesComboBox>
                             </dx:GridViewDataComboBoxColumn>
-                            <dx:GridViewDataComboBoxColumn FieldName="Type_Formation_Necessaire" Caption="Type Formation Necessaire" Width="100%">
+                            <dx:GridViewDataComboBoxColumn FieldName="Type_Formation_Necessaire" Caption="Type Formation Necessaire" Width="100%" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" >
                                 <PropertiesComboBox DataSourceID="SqlFor" TextField="Nom_Formation" ValueField="ID" />
                             </dx:GridViewDataComboBoxColumn>
 

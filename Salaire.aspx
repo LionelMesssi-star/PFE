@@ -106,21 +106,21 @@
                                 </HeaderTemplate>
 
                             </dx:GridViewCommandColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="ID_salaire" Visible="false"></dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="ID_salaire" Visible="false" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede"></dx:GridViewDataTextColumn>
 
-                            <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Employé" Width="33%">
+                            <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Employé" Width="33%" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom" ValueField="ID">
                                <ValidationSettings RequiredField-IsRequired="true" />
                            </PropertiesComboBox>
                        </dx:GridViewDataComboBoxColumn>
 
-                       <dx:GridViewDataTextColumn FieldName="salaire" Caption="Salaire (TND)" Width="33%">
+                       <dx:GridViewDataTextColumn FieldName="salaire" Caption="Salaire (TND)" Width="33%" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                            <PropertiesTextEdit DisplayFormatString="N3">
                                <ValidationSettings RequiredField-IsRequired="true" />
                            </PropertiesTextEdit>
                        </dx:GridViewDataTextColumn>
 
-                       <dx:GridViewDataDateColumn FieldName="Date" Caption="Date" Width="33%">
+                       <dx:GridViewDataDateColumn FieldName="Date" Caption="Date" Width="33%" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                           <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
     <CalendarProperties FirstDayOfWeek="Monday">
         <FastNavProperties DisplayMode="Inline" />

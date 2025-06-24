@@ -212,13 +212,13 @@
                         </HeaderTemplate>
                     </dx:GridViewCommandColumn>
 
-                    <dx:GridViewDataTextColumn FieldName="ID" Visible="false" />
+                    <dx:GridViewDataTextColumn FieldName="ID" Visible="false" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede"/>
 
-                    <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom">
-                        <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom" ValueField="ID" />
+                    <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
+                        <PropertiesComboBox DataSourceID="SqlEmployes"  TextField="Nom_Prenom" ValueField="ID"   />
                     </dx:GridViewDataComboBoxColumn>
 
-                    <dx:GridViewDataComboBoxColumn FieldName="Type_Mouvement" Caption="Type Mouvement">
+                    <dx:GridViewDataComboBoxColumn FieldName="Type_Mouvement" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" Caption="Type Mouvement"  >
                         <PropertiesComboBox>
                             <Items>
                                 <dx:ListEditItem Text="Chomage" Value="Chomage" />
@@ -231,17 +231,17 @@
                         </PropertiesComboBox>
                     </dx:GridViewDataComboBoxColumn>
 
-                    <dx:GridViewDataDateColumn FieldName="Date_Effet" Caption="Date Debut" Visible="true">
+                    <dx:GridViewDataDateColumn FieldName="Date_Effet" Caption="Date Debut" Visible="true" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                         <PropertiesDateEdit EditFormat="Date" UseMaskBehavior="true" DisplayFormatString="dd/MM/yyyy">
                             <ClientSideEvents GotFocus="ShowCalendar" />
                         </PropertiesDateEdit>
                     </dx:GridViewDataDateColumn>
-                    <dx:GridViewDataDateColumn FieldName="Date_Fin" Caption="Date Fin" Visible="true">
+                    <dx:GridViewDataDateColumn FieldName="Date_Fin" Caption="Date Fin" Visible="true" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                         <PropertiesDateEdit EditFormat="Date" UseMaskBehavior="true" DisplayFormatString="dd/MM/yyyy">
                             <ClientSideEvents GotFocus="ShowCalendar" />
                         </PropertiesDateEdit>
                     </dx:GridViewDataDateColumn>
-                    <dx:GridViewDataTextColumn FieldName="Description" Visible="true" Caption="Description" />
+                    <dx:GridViewDataTextColumn FieldName="Description" Visible="true" Caption="Description" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede"/>
 
                 </Columns>
 
@@ -298,11 +298,11 @@
 
                     <dx:GridViewDataTextColumn FieldName="ID" Visible="false" />
 
-                    <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom">
-                        <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom" ValueField="ID" />
+                    <dx:GridViewDataComboBoxColumn FieldName="ID_Employes" Caption="Nom Prenom" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
+                        <PropertiesComboBox DataSourceID="SqlEmployes" TextField="Nom_Prenom"  ValueField="ID" />
                     </dx:GridViewDataComboBoxColumn>
 
-                    <dx:GridViewDataComboBoxColumn FieldName="Type_Sanction" Caption="Type Sanction">
+                    <dx:GridViewDataComboBoxColumn FieldName="Type_Sanction" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" Caption="Type Sanction"  >
                         <PropertiesComboBox>
                             <Items>
                                 <dx:ListEditItem Text="Avertissement" Value="Avertissement" />
@@ -313,7 +313,7 @@
                             <ValidationSettings RequiredField-IsRequired="true" />
                         </PropertiesComboBox>
                     </dx:GridViewDataComboBoxColumn>
-                    <dx:GridViewDataComboBoxColumn FieldName="Motif_Sanction" Caption="Motif Sanction">
+                    <dx:GridViewDataComboBoxColumn FieldName="Motif_Sanction" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" Caption="Motif Sanction"  >
                         <PropertiesComboBox>
                             <Items>
                                 <dx:ListEditItem Text="Faute Grave" Value="Faute_grave" />
@@ -324,17 +324,17 @@
                             <ValidationSettings RequiredField-IsRequired="true" />
                         </PropertiesComboBox>
                     </dx:GridViewDataComboBoxColumn>
-                    <dx:GridViewDataDateColumn FieldName="Date_Effet" Caption="Date Debut" Visible="true">
+                    <dx:GridViewDataDateColumn FieldName="Date_Effet" Caption="Date Debut" Visible="true" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                         <PropertiesDateEdit EditFormat="Date" UseMaskBehavior="true" DisplayFormatString="dd/MM/yyyy">
                             <ClientSideEvents GotFocus="ShowCalendar" />
                         </PropertiesDateEdit>
                     </dx:GridViewDataDateColumn>
-                    <dx:GridViewDataDateColumn FieldName="Date_Fin" Caption="Date Fin" Visible="true">
+                    <dx:GridViewDataDateColumn FieldName="Date_Fin" Caption="Date Fin" Visible="true" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede">
                         <PropertiesDateEdit EditFormat="Date" UseMaskBehavior="true" DisplayFormatString="dd/MM/yyyy">
                             <ClientSideEvents GotFocus="ShowCalendar" />
                         </PropertiesDateEdit>
                     </dx:GridViewDataDateColumn>
-                    <dx:GridViewDataTextColumn FieldName="Description" Visible="true" Caption="Description" />
+                    <dx:GridViewDataTextColumn FieldName="Description" Visible="true" Caption="Description" HeaderStyle-Font-Bold="true" HeaderStyle-BackColor="#dedede" />
 
                 </Columns>
 
